@@ -1,0 +1,68 @@
+# Levantamiento de Requerimientos
+## Entrevista al Dueño del Producto
+
+### 1. Introducción
+
+La elicitación de requerimientos constituye la primera etapa del proceso de desarrollo de software dentro del ciclo de vida del sistema. Su objetivo es identificar, comprender y documentar las necesidades del cliente o dueño del producto, con el fin de definir con claridad el alcance, las funcionalidades y las restricciones del sistema a desarrollar.
+
+En este caso, se realiza una entrevista estructurada orientada a recopilar información relevante para el desarrollo del Sistema de Gestión de Gimnasio.
+
+---
+
+## 2. Preguntas Generales del Proyecto
+
+1. ¿Cuál es el objetivo principal del sistema de gestión del gimnasio?
+2. ¿Qué problemas actuales se desean solucionar con este sistema?
+3. ¿El sistema será una aplicación web, de escritorio o móvil?
+4. ¿Se requiere que el sistema funcione en la nube o en servidores locales?
+5. ¿Cuál es el presupuesto estimado para el desarrollo del sistema?
+6. ¿Cuál es el plazo máximo para la entrega del producto?
+7. ¿Se espera que el sistema pueda escalar en el futuro (más usuarios, más sedes, nuevas funcionalidades)?
+
+---
+
+## 3. Gestión de Usuarios
+
+8. ¿Quién será responsable de registrar a los clientes en el sistema?
+9. ¿El cliente podrá registrarse por sí mismo o únicamente el administrador podrá hacerlo?
+10. ¿Qué información obligatoria debe registrarse para cada cliente?
+11. ¿Qué información obligatoria debe registrarse para cada instructor?
+12. ¿Se manejarán distintos tipos de planes o membresías?
+13. ¿Se permitirá que un cliente tenga más de un instructor asignado?
+
+---
+
+## 4. Gestión de Pagos y Membresías
+
+14. ¿Cómo se manejarán los pagos (mensuales, anuales, personalizados)?
+15. ¿Se permitirán modificaciones de pagos ya registrados (aplazamientos, reembolsos, incrementos, cambios de fecha)?
+16. ¿El sistema debe generar alertas o notificaciones cuando una membresía esté próxima a vencer?
+17. ¿Qué estados puede tener un pago dentro del sistema?
+18. ¿Se requiere generar reportes financieros periódicos?
+
+---
+
+## 5. Rutinas y Progreso Físico
+
+19. ¿Las rutinas se generarán automáticamente o serán diseñadas manualmente por un instructor?
+20. ¿Qué variables influyen en la generación automática de la rutina (IMC, objetivo, edad, experiencia, condición médica)?
+21. ¿Se requiere llevar un historial de medidas corporales?
+22. ¿El instructor podrá modificar la rutina asignada a un cliente?
+23. ¿El cliente podrá descargar su rutina en formato PDF?
+
+---
+
+## 6. Seguridad y Acceso
+
+24. ¿Cada tipo de usuario tendrá diferentes niveles de acceso al sistema?
+25. ¿Se requiere autenticación mediante usuario y contraseña?
+26. ¿Se deben realizar copias de seguridad periódicas de la información?
+27. ¿Se debe cumplir alguna normativa específica relacionada con protección de datos personales?
+
+---
+
+## 7. Reportes y Control Administrativo
+
+28. ¿Qué tipos de reportes necesita visualizar el administrador?
+29. ¿Se requiere exportar reportes en formatos como PDF o Excel?
+30. ¿Se necesita llevar control de clientes inactivos o con pagos vencidos?
