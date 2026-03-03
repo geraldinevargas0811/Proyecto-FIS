@@ -1,0 +1,58 @@
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/145.0.0.0 Safari/537.36" version="29.6.0">
+  <diagram name="Página-1" id="R_hjyRrFbs4mDeE-vwqs">
+    <mxGraphModel dx="1426" dy="785" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="UsKB9nTpoMAe-c5WMiDi-13" edge="1" parent="1" source="UsKB9nTpoMAe-c5WMiDi-2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0;exitDx=0;exitDy=0;entryX=1;entryY=0.25;entryDx=0;entryDy=0;" target="UsKB9nTpoMAe-c5WMiDi-4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="UsKB9nTpoMAe-c5WMiDi-15" edge="1" parent="1" source="UsKB9nTpoMAe-c5WMiDi-2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0;exitDx=0;exitDy=0;entryX=0;entryY=0.25;entryDx=0;entryDy=0;" target="UsKB9nTpoMAe-c5WMiDi-5">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="UsKB9nTpoMAe-c5WMiDi-2" parent="1" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;" value="Sistema de Gestión de Gimnasio" vertex="1">
+          <mxGeometry height="110" width="110" x="320" y="280" as="geometry" />
+        </mxCell>
+        <mxCell id="UsKB9nTpoMAe-c5WMiDi-14" edge="1" parent="1" source="UsKB9nTpoMAe-c5WMiDi-4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.75;exitDx=0;exitDy=0;entryX=0;entryY=1;entryDx=0;entryDy=0;" target="UsKB9nTpoMAe-c5WMiDi-2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="UsKB9nTpoMAe-c5WMiDi-4" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="Administrador" vertex="1">
+          <mxGeometry height="60" width="120" x="90" y="305" as="geometry" />
+        </mxCell>
+        <mxCell id="UsKB9nTpoMAe-c5WMiDi-16" edge="1" parent="1" source="UsKB9nTpoMAe-c5WMiDi-5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.75;exitDx=0;exitDy=0;entryX=1;entryY=1;entryDx=0;entryDy=0;" target="UsKB9nTpoMAe-c5WMiDi-2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="UsKB9nTpoMAe-c5WMiDi-5" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="Instructor" vertex="1">
+          <mxGeometry height="60" width="120" x="540" y="305" as="geometry" />
+        </mxCell>
+        <mxCell id="UsKB9nTpoMAe-c5WMiDi-6" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="Cliente" vertex="1">
+          <mxGeometry height="60" width="120" x="320" y="520" as="geometry" />
+        </mxCell>
+        <mxCell id="UsKB9nTpoMAe-c5WMiDi-17" edge="1" parent="1" source="UsKB9nTpoMAe-c5WMiDi-2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=1;exitDx=0;exitDy=0;entryX=0.367;entryY=0;entryDx=0;entryDy=0;entryPerimeter=0;" target="UsKB9nTpoMAe-c5WMiDi-6">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="UsKB9nTpoMAe-c5WMiDi-18" edge="1" parent="1" source="UsKB9nTpoMAe-c5WMiDi-2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=1;exitDx=0;exitDy=0;entryX=0.625;entryY=-0.05;entryDx=0;entryDy=0;entryPerimeter=0;endArrow=none;endFill=0;startArrow=classic;startFill=1;" target="UsKB9nTpoMAe-c5WMiDi-6">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="UsKB9nTpoMAe-c5WMiDi-19" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="Datos de clientes, pagos e instructores&lt;div&gt;&lt;br&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="30" width="110" x="210" y="390" as="geometry" />
+        </mxCell>
+        <mxCell id="UsKB9nTpoMAe-c5WMiDi-20" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="&lt;div&gt;Reportes, confirmaciones y alertas&lt;/div&gt;" vertex="1">
+          <mxGeometry height="30" width="110" x="210" y="250" as="geometry" />
+        </mxCell>
+        <mxCell id="UsKB9nTpoMAe-c5WMiDi-21" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="&lt;div&gt;Información de clientes asignados, rutinas&lt;/div&gt;" vertex="1">
+          <mxGeometry height="30" width="130" x="420" y="260" as="geometry" />
+        </mxCell>
+        <mxCell id="UsKB9nTpoMAe-c5WMiDi-22" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="&lt;div&gt;Rutinas, estado de membres&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;ía, historial&lt;/span&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="30" width="130" x="230" y="490" as="geometry" />
+        </mxCell>
+        <mxCell id="UsKB9nTpoMAe-c5WMiDi-24" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="&lt;div&gt;Registro de medidas, actualización de rutinas&lt;/div&gt;" vertex="1">
+          <mxGeometry height="30" width="130" x="430" y="380" as="geometry" />
+        </mxCell>
+        <mxCell id="UsKB9nTpoMAe-c5WMiDi-25" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="&lt;div&gt;Datos personales, solicitud de servicios&lt;/div&gt;" vertex="1">
+          <mxGeometry height="30" width="130" x="400" y="490" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
