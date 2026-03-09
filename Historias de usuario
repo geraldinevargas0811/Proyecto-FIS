@@ -1,0 +1,128 @@
+# Historias de Usuario
+## Sistema de Gestión de Gimnasio
+
+Este documento describe las historias de usuario identificadas durante el proceso de levantamiento y análisis de requerimientos del Sistema de Gestión de Gimnasio.  
+Las historias de usuario representan funcionalidades del sistema desde la perspectiva de los distintos tipos de usuarios.
+
+---
+
+# 1. Gestión de Clientes
+
+### HU-01 Registrar cliente
+**Como** administrador  
+**Quiero** registrar nuevos clientes en el sistema  
+**Para** llevar un control organizado de los usuarios del gimnasio.
+
+### HU-02 Consultar información de cliente
+**Como** administrador  
+**Quiero** consultar la información registrada de un cliente  
+**Para** verificar sus datos personales, estado de membresía y progreso.
+
+### HU-03 Actualizar datos de cliente
+**Como** administrador  
+**Quiero** actualizar la información de un cliente  
+**Para** mantener los datos correctos y actualizados.
+
+### HU-04 Eliminar cliente
+**Como** administrador  
+**Quiero** eliminar o desactivar clientes del sistema  
+**Para** mantener el registro de usuarios actualizado.
+
+---
+
+# 2. Gestión de Instructores
+
+### HU-05 Registrar instructor
+**Como** administrador  
+**Quiero** registrar instructores en el sistema  
+**Para** asignarlos posteriormente a los clientes.
+
+### HU-06 Consultar instructores
+**Como** administrador  
+**Quiero** visualizar la lista de instructores registrados  
+**Para** gestionar la asignación de clientes.
+
+### HU-07 Asignar instructor a cliente
+**Como** administrador  
+**Quiero** asignar un instructor a un cliente  
+**Para** que pueda supervisar su entrenamiento.
+
+---
+
+# 3. Gestión de Membresías y Pagos
+
+### HU-08 Registrar pago de membresía
+**Como** administrador  
+**Quiero** registrar el pago de una membresía  
+**Para** mantener actualizado el estado de pago del cliente.
+
+### HU-09 Consultar historial de pagos
+**Como** administrador  
+**Quiero** consultar el historial de pagos de un cliente  
+**Para** verificar su estado financiero.
+
+### HU-10 Generar alertas de membresía vencida
+**Como** administrador  
+**Quiero** recibir alertas cuando una membresía esté próxima a vencer  
+**Para** gestionar renovaciones a tiempo.
+
+---
+
+# 4. Gestión de Rutinas
+
+### HU-11 Generar rutina de entrenamiento
+**Como** instructor  
+**Quiero** generar una rutina de entrenamiento para un cliente  
+**Para** ayudarle a cumplir sus objetivos físicos.
+
+### HU-12 Modificar rutina
+**Como** instructor  
+**Quiero** modificar la rutina asignada a un cliente  
+**Para** ajustarla según su progreso.
+
+### HU-13 Consultar rutina
+**Como** cliente  
+**Quiero** consultar mi rutina de entrenamiento  
+**Para** saber qué ejercicios debo realizar.
+
+---
+
+# 5. Seguimiento del Progreso
+
+### HU-14 Registrar medidas corporales
+**Como** instructor  
+**Quiero** registrar las medidas corporales del cliente  
+**Para** llevar seguimiento de su progreso físico.
+
+### HU-15 Consultar progreso físico
+**Como** cliente  
+**Quiero** visualizar mi historial de progreso  
+**Para** evaluar mis avances en el entrenamiento.
+
+---
+
+# 6. Reportes y Administración
+
+### HU-16 Generar reportes del sistema
+**Como** administrador  
+**Quiero** generar reportes del sistema  
+**Para** analizar información de clientes, pagos y actividad del gimnasio.
+
+### HU-17 Exportar reportes
+**Como** administrador  
+**Quiero** exportar reportes en formatos como PDF o Excel  
+**Para** compartir la información fácilmente.
+
+---
+
+# 7. Seguridad del Sistema
+
+### HU-18 Autenticación de usuarios
+**Como** usuario del sistema  
+**Quiero** iniciar sesión con usuario y contraseña  
+**Para** acceder de forma segura a las funcionalidades del sistema.
+
+### HU-19 Control de acceso por roles
+**Como** administrador del sistema  
+**Quiero** que cada usuario tenga permisos según su rol  
+**Para** proteger la información y evitar accesos no autorizados.
