@@ -7,11 +7,12 @@ import { useAuthStore } from '../../../store/authStore'
 import type { Role } from '../../../types/auth'
 
 const schema = z.object({
-  username: z.string().min(3, 'Usuario requerido'),
-  password: z.string().min(6, 'Contraseña mínima 6 caracteres'),
+  correo: z.string().email('Ingrese un correo válido'),
+  contrasena: z.string().min(6, 'Contraseña mínima 6 caracteres'),
 })
 
 type FormValues = z.infer<typeof schema>
+
 
 const roleToPath: Record<Role, string> = {
   ADMIN: '/admin/dashboard',
@@ -37,8 +38,9 @@ export default function LoginPage() {
     formState: { errors },
   } = useForm<FormValues>({
     resolver,
-    defaultValues: { username: '', password: '' },
+    defaultValues: { correo: '', contrasena: '' },
   })
+
 
   useEffect(() => {
     // mensaje por expiración
@@ -55,7 +57,11 @@ export default function LoginPage() {
 
   const onSubmit = handleSubmit(async (values) => {
     try {
-      await login(values)
+      await login({
+        correo: values.correo,
+        contrasena: values.contrasena,
+      })
+
 
       // Si el backend no devuelve me en /login, cargamos.
       // En tu backend existe /me y roles.
@@ -94,28 +100,33 @@ export default function LoginPage() {
                 <label className="block">
                   <span className="text-sm text-slate-200">Usuario</span>
                   <input
-                    {...register('username')}
+                    {...register('correo')}
+
                     className="mt-1 w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-white placeholder:text-slate-500 outline-none focus:border-cyan-400/40 focus:ring-2 focus:ring-cyan-400/20"
-                    placeholder="tu.usuario"
+                    placeholder="tu.correo@ejemplo.com"
+
                     autoComplete="username"
                   />
-                  {errors.username ? (
-                    <span className="mt-1 block text-xs text-rose-300">{errors.username.message}</span>
+                  {errors.correo ? (
+                    <span className="mt-1 block text-xs text-rose-300">{errors.correo.message}</span>
                   ) : null}
+
                 </label>
 
                 <label className="block">
                   <span className="text-sm text-slate-200">Contraseña</span>
                   <input
-                    {...register('password')}
+                    {...register('contrasena')}
+
                     type="password"
                     className="mt-1 w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-white placeholder:text-slate-500 outline-none focus:border-cyan-400/40 focus:ring-2 focus:ring-cyan-400/20"
                     placeholder="••••••••"
                     autoComplete="current-password"
                   />
-                  {errors.password ? (
-                    <span className="mt-1 block text-xs text-rose-300">{errors.password.message}</span>
+                  {errors.contrasena ? (
+                    <span className="mt-1 block text-xs text-rose-300">{errors.contrasena.message}</span>
                   ) : null}
+
                 </label>
 
                 <button

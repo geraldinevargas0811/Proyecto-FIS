@@ -1,6 +1,7 @@
 import { http } from './http'
 import type { LoginRequest, LoginResponse, RefreshResponse, LogoutResponse } from '../types/auth'
 
+
 export const authApi = {
   login: (payload: LoginRequest) => http.post<LoginResponse>('/api/auth/login', payload),
   refresh: (payload: { refreshToken: string }) =>

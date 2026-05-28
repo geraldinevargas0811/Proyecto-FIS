@@ -1,63 +1,96 @@
-import type { AxiosError } from 'axios'
+import type { AxiosError, InternalAxiosRequestConfig } from 'axios'
 
 import { authApi } from './authApi'
 import { http } from './http'
-import { getAccessToken, getRefreshToken, setMe, setTokens, clearMe, clearTokens } from '../utils/storage'
-import type { AuthMe, AuthTokens } from '../types/auth'
-
-// (type removed - suprime TS6196/uso innecesario)
-
-
-
+import {
+  getAccessToken,
+  getRefreshToken,
+  setMe,
+  setTokens,
+  clearMe,
+  clearTokens,
+} from '../utils/storage'
+import type { AuthMe, AuthTokens, LoginResponse } from '../types/auth'
 
 let isRefreshing = false
+let requestInterceptorId: number | null = null
+let responseInterceptorId: number | null = null
 let refreshSubscribers: Array<(tokens: AuthTokens) => void> = []
+let refreshFailures: Array<(error: unknown) => void> = []
 
+function isAuthEndpoint(url?: string) {
+  return Boolean(
+    url?.includes('/api/auth/login')
+      || url?.includes('/api/auth/refresh')
+      || url?.includes('/api/auth/logout'),
+  )
+}
 
-function subscribeTokenRefresh(cb: (tokens: AuthTokens) => void) {
-  refreshSubscribers.push(cb)
+function subscribeTokenRefresh(resolve: (tokens: AuthTokens) => void, reject: (error: unknown) => void) {
+  refreshSubscribers.push(resolve)
+  refreshFailures.push(reject)
 }
 
 function notifySubscribers(tokens: AuthTokens) {
   refreshSubscribers.forEach((cb) => cb(tokens))
   refreshSubscribers = []
+  refreshFailures = []
 }
 
-function attachAuthorization(config: any): any {
-  const accessToken = getAccessToken()
-  if (!accessToken) return config
+function notifyRefreshFailure(error: unknown) {
+  refreshFailures.forEach((cb) => cb(error))
+  refreshSubscribers = []
+  refreshFailures = []
+}
 
-  // Axios tipa headers como AxiosRequestHeaders (con AxiosHeaders interno). Para evitar errores TS,
-  // usamos any aquí: funcionalmente Axios lo acepta.
-  config.headers = { ...(config.headers ?? {}), Authorization: `Bearer ${accessToken}` } as any
+function attachAuthorization(config: InternalAxiosRequestConfig): InternalAxiosRequestConfig {
+  const accessToken = getAccessToken()
+  if (!accessToken || isAuthEndpoint(config.url)) return config
+
+  config.headers.set('Authorization', `Bearer ${accessToken}`)
   return config
 }
 
+function persistAuthPayload(data: LoginResponse): AuthTokens {
+  const tokens: AuthTokens = {
+    accessToken: data.accessToken,
+    refreshToken: data.refreshToken,
+  }
+  setTokens(tokens)
 
+  const me = data.me ?? data.usuario ?? null
+  if (me) setMe(me)
 
+  return tokens
+}
 
 export function setupInterceptors(onSessionExpired: () => void) {
-  http.interceptors.request.use((config) => attachAuthorization(config))
+  if (requestInterceptorId !== null) {
+    http.interceptors.request.eject(requestInterceptorId)
+  }
+  if (responseInterceptorId !== null) {
+    http.interceptors.response.eject(responseInterceptorId)
+  }
 
-  http.interceptors.response.use(
+  requestInterceptorId = http.interceptors.request.use((config) => attachAuthorization(config))
+
+  responseInterceptorId = http.interceptors.response.use(
     (res) => res,
     async (err: AxiosError) => {
-      const originalRequest = err.config
-      if (!originalRequest) return Promise.reject(err)
+      const originalRequest = err.config as (InternalAxiosRequestConfig & { _retry?: boolean }) | undefined
 
-      // Si no es 401, propagamos
-      if (err.response?.status !== 401) return Promise.reject(err)
+      if (!originalRequest || err.response?.status !== 401 || isAuthEndpoint(originalRequest.url)) {
+        return Promise.reject(err)
+      }
 
-      // Evitar bucle de refresh
-      const alreadyRetried = (originalRequest as any)._retry
-      if (alreadyRetried) {
+      if (originalRequest._retry) {
         clearTokens()
         clearMe()
         onSessionExpired()
         return Promise.reject(err)
       }
 
-      ;(originalRequest as any)._retry = true
+      originalRequest._retry = true
 
       const refreshToken = getRefreshToken()
       if (!refreshToken) {
@@ -67,39 +100,29 @@ export function setupInterceptors(onSessionExpired: () => void) {
         return Promise.reject(err)
       }
 
-  if (isRefreshing) {
+      if (isRefreshing) {
         return new Promise((resolve, reject) => {
-          subscribeTokenRefresh((tokens) => {
-            ;(originalRequest as any).headers = {
-              ...((originalRequest as any).headers ?? {}),
-              Authorization: `Bearer ${tokens.accessToken}`,
-            }
-            resolve(http(originalRequest as any) as any)
-
-          })
-          setTimeout(() => reject(err), 10_000)
+          subscribeTokenRefresh(
+            (tokens) => {
+              originalRequest.headers.set('Authorization', `Bearer ${tokens.accessToken}`)
+              resolve(http(originalRequest))
+            },
+            reject,
+          )
         })
       }
 
-
       isRefreshing = true
       try {
-
         const resp = await authApi.refresh({ refreshToken })
-        const tokens = resp.data
-        setTokens(tokens)
+        const tokens = persistAuthPayload(resp.data)
 
-        // opcional: actualizar me si aplica (pero no forzamos)
         notifySubscribers(tokens)
+        originalRequest.headers.set('Authorization', `Bearer ${tokens.accessToken}`)
 
-        // Reintentar request original
-        ;(originalRequest as any).headers = {
-          ...((originalRequest as any).headers ?? {}),
-          Authorization: `Bearer ${tokens.accessToken}`,
-        }
-        return http(originalRequest as any)
-
+        return http(originalRequest)
       } catch (refreshErr) {
+        notifyRefreshFailure(refreshErr)
         clearTokens()
         clearMe()
         onSessionExpired()
@@ -113,8 +136,7 @@ export function setupInterceptors(onSessionExpired: () => void) {
 
 export async function fetchAndStoreMe(): Promise<AuthMe | null> {
   const resp = await authApi.me()
-  const me = (resp.data as any) ?? null
+  const me = (resp.data as AuthMe | null) ?? null
   if (me) setMe(me)
-  return me as AuthMe | null
+  return me
 }
-

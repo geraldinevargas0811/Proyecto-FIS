@@ -63,6 +63,10 @@ public class JwtService {
     }
 
     private String buildToken(Usuario usuario, String tokenType, long expirationMs) {
+        if (usuario.getRol() == null) {
+            throw new IllegalStateException("El usuario " + usuario.getCorreo() + " no tiene rol asignado");
+        }
+
         Date now = new Date();
         Date expiration = new Date(now.getTime() + expirationMs);
 
@@ -103,7 +107,7 @@ public class JwtService {
         byte[] keyBytes;
         try {
             keyBytes = Decoders.BASE64.decode(jwtSecret);
-        } catch (IllegalArgumentException ex) {
+        } catch (RuntimeException ex) {
             keyBytes = jwtSecret.getBytes(StandardCharsets.UTF_8);
         }
         return Keys.hmacShaKeyFor(keyBytes);

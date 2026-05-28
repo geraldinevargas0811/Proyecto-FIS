@@ -1,5 +1,6 @@
 package com.gimnasio.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.gimnasio.enums.EstadoMembresia;
 import jakarta.persistence.*;
 import java.time.LocalDate;
@@ -18,6 +19,7 @@ public class Membresia {
 
     @ManyToOne
     @JoinColumn(name = "client_id", nullable = false)
+    @JsonIgnoreProperties({"membresia", "rutina", "progresos", "notasInstructor", "instructor"})
     private Cliente cliente;
 
     @ManyToOne
@@ -42,6 +44,7 @@ public class Membresia {
     private LocalDateTime createdAt;
 
     @OneToMany(mappedBy = "membresia", cascade = CascadeType.ALL)
+    @JsonIgnoreProperties({"membresia", "cliente"})
     private List<Pago> pagos = new ArrayList<>();
 
     @PrePersist

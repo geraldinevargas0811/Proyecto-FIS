@@ -24,6 +24,10 @@ type AuthState = {
   clearError: () => void
 }
 
+function resolveRole(me: AuthMe | null): Role | null {
+  return (me?.role ?? me?.rol ?? null) as Role | null
+}
+
 export const useAuthStore = create<AuthState>((set) => ({
 
   status: 'idle',
@@ -33,7 +37,7 @@ export const useAuthStore = create<AuthState>((set) => ({
   refreshToken: getRefreshToken(),
 
   me: getMe<AuthMe>(),
-  role: getMe<AuthMe>()?.role ?? null,
+  role: resolveRole(getMe<AuthMe>()),
 
   hydrateFromStorage: () => {
     const accessToken = getAccessToken()
@@ -44,7 +48,7 @@ export const useAuthStore = create<AuthState>((set) => ({
       accessToken,
       refreshToken,
       me,
-      role: me?.role ?? null,
+      role: resolveRole(me),
       status: accessToken ? 'authenticated' : 'unauthenticated',
     })
   },
@@ -63,7 +67,7 @@ export const useAuthStore = create<AuthState>((set) => ({
       setMe(me)
       set({
         me,
-        role: me?.role ?? null,
+        role: resolveRole(me),
         status: 'authenticated',
       })
     } catch {
@@ -86,14 +90,14 @@ export const useAuthStore = create<AuthState>((set) => ({
 
       setTokens(tokens)
 
-      const me = data.me ?? null
+      const me = data.me ?? data.usuario ?? null
       if (me) setMe(me)
 
       set({
         accessToken: tokens.accessToken,
         refreshToken: tokens.refreshToken,
         me,
-        role: (me as any)?.role ?? null,
+        role: resolveRole(me),
         status: 'authenticated',
       })
     } catch (e: any) {
@@ -108,9 +112,20 @@ export const useAuthStore = create<AuthState>((set) => ({
 
     try {
       const resp = await authApi.refresh({ refreshToken })
-      const tokens = resp.data
+      const tokens = {
+        accessToken: resp.data.accessToken,
+        refreshToken: resp.data.refreshToken,
+      }
       setTokens(tokens)
-      set({ accessToken: tokens.accessToken, refreshToken: tokens.refreshToken, status: 'authenticated' })
+      const me = resp.data.me ?? resp.data.usuario ?? getMe<AuthMe>()
+      if (me) setMe(me)
+      set({
+        accessToken: tokens.accessToken,
+        refreshToken: tokens.refreshToken,
+        me,
+        role: resolveRole(me),
+        status: 'authenticated',
+      })
     } catch {
       clearTokens()
       clearMe()

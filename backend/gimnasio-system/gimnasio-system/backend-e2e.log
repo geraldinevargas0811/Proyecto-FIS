@@ -1,0 +1,2819 @@
+Standard Commons Logging discovery in action with spring-jcl: please remove commons-logging.jar from classpath in order to avoid potential conflicts
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::                (v3.5.5)
+
+2026-05-27T17:48:06.812-05:00  INFO 17780 --- [           main] com.gimnasio.GimnasioSystemApplication   : Starting GimnasioSystemApplication v0.0.1-SNAPSHOT using Java 23.0.2 with PID 17780 (C:\Users\Geraldine\Documents\uni\matriculas\quinta\FIS\Proyecto\Proyecto-FIS\backend\gimnasio-system\gimnasio-system\target\gimnasio-system-0.0.1-SNAPSHOT.jar started by Geraldine in C:\Users\Geraldine\Documents\uni\matriculas\quinta\FIS\Proyecto\Proyecto-FIS\backend\gimnasio-system\gimnasio-system)
+2026-05-27T17:48:06.819-05:00 DEBUG 17780 --- [           main] com.gimnasio.GimnasioSystemApplication   : Running with Spring Boot v3.5.5, Spring v6.2.10
+2026-05-27T17:48:06.819-05:00  INFO 17780 --- [           main] com.gimnasio.GimnasioSystemApplication   : No active profile set, falling back to 1 default profile: "default"
+2026-05-27T17:48:13.816-05:00  INFO 17780 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-05-27T17:48:14.366-05:00  INFO 17780 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 453 ms. Found 12 JPA repository interfaces.
+2026-05-27T17:48:17.782-05:00  INFO 17780 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2026-05-27T17:48:17.915-05:00  INFO 17780 --- [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-05-27T17:48:17.915-05:00  INFO 17780 --- [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.44]
+2026-05-27T17:48:18.219-05:00  INFO 17780 --- [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2026-05-27T17:48:18.235-05:00  INFO 17780 --- [           main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 10930 ms
+Standard Commons Logging discovery in action with spring-jcl: please remove commons-logging.jar from classpath in order to avoid potential conflicts
+2026-05-27T17:48:21.086-05:00  INFO 17780 --- [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-05-27T17:48:21.603-05:00  INFO 17780 --- [           main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.26.Final
+2026-05-27T17:48:21.834-05:00  INFO 17780 --- [           main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2026-05-27T17:48:24.508-05:00  INFO 17780 --- [           main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-05-27T17:48:24.738-05:00  INFO 17780 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-05-27T17:48:25.871-05:00  INFO 17780 --- [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@5a2035e1
+2026-05-27T17:48:25.887-05:00  INFO 17780 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-05-27T17:48:26.056-05:00  WARN 17780 --- [           main] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-05-27T17:48:26.172-05:00  INFO 17780 --- [           main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 16.9
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-05-27T17:48:32.077-05:00  INFO 17780 --- [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-05-27T17:48:34.674-05:00  INFO 17780 --- [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-05-27T17:48:35.911-05:00 DEBUG 17780 --- [           main] c.g.security.JwtAuthenticationFilter     : Filter 'jwtAuthenticationFilter' configured for use
+2026-05-27T17:48:36.346-05:00  INFO 17780 --- [           main] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-05-27T17:48:39.979-05:00  INFO 17780 --- [           main] eAuthenticationProviderManagerConfigurer : Global AuthenticationManager configured with AuthenticationProvider bean with name authenticationProvider
+2026-05-27T17:48:39.979-05:00  WARN 17780 --- [           main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with an AuthenticationProvider bean. UserDetailsService beans will not be used by Spring Security for automatically configuring username/password login. Consider removing the AuthenticationProvider bean. Alternatively, consider using the UserDetailsService in a manually instantiated DaoAuthenticationProvider. If the current configuration is intentional, to turn off this warning, increase the logging level of 'org.springframework.security.config.annotation.authentication.configuration.InitializeUserDetailsBeanManagerConfigurer' to ERROR
+2026-05-27T17:48:40.165-05:00  WARN 17780 --- [           main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-05-27T17:48:41.012-05:00  INFO 17780 --- [           main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint beneath base path '/actuator'
+2026-05-27T17:48:42.494-05:00  INFO 17780 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2026-05-27T17:48:42.563-05:00  INFO 17780 --- [           main] com.gimnasio.GimnasioSystemApplication   : Started GimnasioSystemApplication in 38.534 seconds (process running for 41.866)
+2026-05-27T17:48:42.965-05:00  INFO 17780 --- [nio-8080-exec-2] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-05-27T17:48:42.965-05:00  INFO 17780 --- [nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-05-27T17:48:42.965-05:00  INFO 17780 --- [nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 0 ms
+[RestAuthenticationEntryPoint] commence triggered. servletPath=/api/auth/me, requestURI=/api/auth/me, authException=org.springframework.security.authentication.InsufficientAuthenticationException, message=Full authentication is required to access this resource
+Hibernate: 
+    select
+        u1_0.id,
+        case 
+            when u1_1.user_id is not null 
+                then 1 
+            when u1_2.user_id is not null 
+                then 2 
+            when u1_3.user_id is not null 
+                then 3 
+        end,
+        u1_0.activo,
+        u1_0.apellido,
+        u1_0.contrasena,
+        u1_0.email,
+        u1_0.documento,
+        u1_0.fecha_registro,
+        u1_0.nombre,
+        u1_0.rol,
+        u1_0.status,
+        u1_0.telefono,
+        u1_0.updated_at,
+        u1_1.created_at,
+        u1_1.nivel_acceso,
+        u1_2.active,
+        u1_2.altura,
+        u1_2.created_at,
+        u1_2.fecha_nacimiento,
+        u1_2.frecuencia_entrenamiento,
+        u1_2.genero,
+        u1_2.imc,
+        u1_2.instructor_id,
+        u1_2.user_id,
+        u1_2.objetivo,
+        u1_2.peso,
+        u1_2.quiere_instructor,
+        u1_3.anos_experiencia,
+        u1_3.certificaciones,
+        u1_3.contract_type,
+        u1_3.created_at,
+        u1_3.disponible,
+        u1_3.especialidad,
+        u1_3.fecha_contratacion,
+        u1_3.horario_trabajo,
+        u1_3.salario 
+    from
+        users u1_0 
+    left join
+        administradores u1_1 
+            on u1_0.id=u1_1.user_id 
+    left join
+        clients u1_2 
+            on u1_0.id=u1_2.user_id 
+    left join
+        instructors u1_3 
+            on u1_0.id=u1_3.user_id 
+    where
+        u1_0.email=?
+2026-05-27T17:48:44.853-05:00  INFO 17780 --- [           main] com.gimnasio.config.DemoDevDataSeeder    : ADMIN demo existente; password actualizado: admin@demo.com
+Hibernate: 
+    update
+        users 
+    set
+        activo=?,
+        apellido=?,
+        contrasena=?,
+        email=?,
+        documento=?,
+        fecha_registro=?,
+        nombre=?,
+        rol=?,
+        status=?,
+        telefono=?,
+        updated_at=? 
+    where
+        id=?
+Hibernate: 
+    select
+        u1_0.id,
+        case 
+            when u1_1.user_id is not null 
+                then 1 
+            when u1_2.user_id is not null 
+                then 2 
+            when u1_3.user_id is not null 
+                then 3 
+        end,
+        u1_0.activo,
+        u1_0.apellido,
+        u1_0.contrasena,
+        u1_0.email,
+        u1_0.documento,
+        u1_0.fecha_registro,
+        u1_0.nombre,
+        u1_0.rol,
+        u1_0.status,
+        u1_0.telefono,
+        u1_0.updated_at,
+        u1_1.created_at,
+        u1_1.nivel_acceso,
+        u1_2.active,
+        u1_2.altura,
+        u1_2.created_at,
+        u1_2.fecha_nacimiento,
+        u1_2.frecuencia_entrenamiento,
+        u1_2.genero,
+        u1_2.imc,
+        u1_2.instructor_id,
+        u1_2.user_id,
+        u1_2.objetivo,
+        u1_2.peso,
+        u1_2.quiere_instructor,
+        u1_3.anos_experiencia,
+        u1_3.certificaciones,
+        u1_3.contract_type,
+        u1_3.created_at,
+        u1_3.disponible,
+        u1_3.especialidad,
+        u1_3.fecha_contratacion,
+        u1_3.horario_trabajo,
+        u1_3.salario 
+    from
+        users u1_0 
+    left join
+        administradores u1_1 
+            on u1_0.id=u1_1.user_id 
+    left join
+        clients u1_2 
+            on u1_0.id=u1_2.user_id 
+    left join
+        instructors u1_3 
+            on u1_0.id=u1_3.user_id 
+    where
+        u1_0.email=?
+2026-05-27T17:48:45.412-05:00  INFO 17780 --- [           main] com.gimnasio.config.DemoDevDataSeeder    : INSTRUCTOR demo existente; password actualizado: instructor@demo.com
+Hibernate: 
+    update
+        users 
+    set
+        activo=?,
+        apellido=?,
+        contrasena=?,
+        email=?,
+        documento=?,
+        fecha_registro=?,
+        nombre=?,
+        rol=?,
+        status=?,
+        telefono=?,
+        updated_at=? 
+    where
+        id=?
+Hibernate: 
+    select
+        u1_0.id,
+        case 
+            when u1_1.user_id is not null 
+                then 1 
+            when u1_2.user_id is not null 
+                then 2 
+            when u1_3.user_id is not null 
+                then 3 
+        end,
+        u1_0.activo,
+        u1_0.apellido,
+        u1_0.contrasena,
+        u1_0.email,
+        u1_0.documento,
+        u1_0.fecha_registro,
+        u1_0.nombre,
+        u1_0.rol,
+        u1_0.status,
+        u1_0.telefono,
+        u1_0.updated_at,
+        u1_1.created_at,
+        u1_1.nivel_acceso,
+        u1_2.active,
+        u1_2.altura,
+        u1_2.created_at,
+        u1_2.fecha_nacimiento,
+        u1_2.frecuencia_entrenamiento,
+        u1_2.genero,
+        u1_2.imc,
+        u1_2.instructor_id,
+        u1_2.user_id,
+        u1_2.objetivo,
+        u1_2.peso,
+        u1_2.quiere_instructor,
+        u1_3.anos_experiencia,
+        u1_3.certificaciones,
+        u1_3.contract_type,
+        u1_3.created_at,
+        u1_3.disponible,
+        u1_3.especialidad,
+        u1_3.fecha_contratacion,
+        u1_3.horario_trabajo,
+        u1_3.salario 
+    from
+        users u1_0 
+    left join
+        administradores u1_1 
+            on u1_0.id=u1_1.user_id 
+    left join
+        clients u1_2 
+            on u1_0.id=u1_2.user_id 
+    left join
+        instructors u1_3 
+            on u1_0.id=u1_3.user_id 
+    where
+        u1_0.email=?
+Hibernate: 
+    select
+        m1_0.id,
+        m1_0.activo,
+        m1_0.client_id,
+        c1_0.user_id,
+        c1_1.activo,
+        c1_1.apellido,
+        c1_1.contrasena,
+        c1_1.email,
+        c1_1.documento,
+        c1_1.fecha_registro,
+        c1_1.nombre,
+        c1_1.rol,
+        c1_1.status,
+        c1_1.telefono,
+        c1_1.updated_at,
+        c1_0.active,
+        c1_0.altura,
+        c1_0.created_at,
+        c1_0.fecha_nacimiento,
+        c1_0.frecuencia_entrenamiento,
+        c1_0.genero,
+        c1_0.imc,
+        i1_0.user_id,
+        i1_1.activo,
+        i1_1.apellido,
+        i1_1.contrasena,
+        i1_1.email,
+        i1_1.documento,
+        i1_1.fecha_registro,
+        i1_1.nombre,
+        i1_1.rol,
+        i1_1.status,
+        i1_1.telefono,
+        i1_1.updated_at,
+        i1_0.anos_experiencia,
+        i1_0.certificaciones,
+        i1_0.contract_type,
+        i1_0.created_at,
+        i1_0.disponible,
+        i1_0.especialidad,
+        i1_0.fecha_contratacion,
+        i1_0.horario_trabajo,
+        i1_0.salario,
+        c1_0.objetivo,
+        c1_0.peso,
+        c1_0.quiere_instructor,
+        r1_0.id,
+        r1_0.activa,
+        r1_0.client_id,
+        r1_0.created_at,
+        r1_0.fecha_generacion,
+        r1_0.frecuencia_semanal,
+        r1_0.generated_by_system,
+        r1_0.nivel_dificultad,
+        r1_0.objetivo,
+        r1_0.updated_at,
+        m1_0.created_at,
+        m1_0.estado,
+        m1_0.fecha_inicio,
+        m1_0.fecha_vencimiento,
+        m1_0.plan_id,
+        p1_0.id,
+        p1_0.activo,
+        p1_0.beneficios,
+        p1_0.created_at,
+        p1_0.descripcion,
+        p1_0.duracion_meses,
+        p1_0.nombre,
+        p1_0.precio,
+        p1_0.tipo,
+        m1_0.renovacion_automatica 
+    from
+        memberships m1_0 
+    join
+        clients c1_0 
+            on c1_0.user_id=m1_0.client_id 
+    join
+        users c1_1 
+            on c1_0.user_id=c1_1.id 
+    left join
+        instructors i1_0 
+            on i1_0.user_id=c1_0.instructor_id 
+    left join
+        users i1_1 
+            on i1_0.user_id=i1_1.id 
+    left join
+        routines r1_0 
+            on c1_0.user_id=r1_0.client_id 
+    join
+        membership_plans p1_0 
+            on p1_0.id=m1_0.plan_id 
+    where
+        m1_0.client_id=?
+2026-05-27T17:48:45.664-05:00  INFO 17780 --- [           main] com.gimnasio.config.DemoDevDataSeeder    : CLIENTE demo existente; password actualizado: cliente@demo.com
+Hibernate: 
+    select
+        p1_0.id,
+        p1_0.activo,
+        p1_0.beneficios,
+        p1_0.created_at,
+        p1_0.descripcion,
+        p1_0.duracion_meses,
+        p1_0.nombre,
+        p1_0.precio,
+        p1_0.tipo 
+    from
+        membership_plans p1_0 
+    where
+        p1_0.tipo=?
+Hibernate: 
+    update
+        users 
+    set
+        activo=?,
+        apellido=?,
+        contrasena=?,
+        email=?,
+        documento=?,
+        fecha_registro=?,
+        nombre=?,
+        rol=?,
+        status=?,
+        telefono=?,
+        updated_at=? 
+    where
+        id=?
+Hibernate: 
+    select
+        m1_0.id,
+        m1_0.activo,
+        m1_0.client_id,
+        m1_0.created_at,
+        m1_0.estado,
+        m1_0.fecha_inicio,
+        m1_0.fecha_vencimiento,
+        m1_0.plan_id,
+        m1_0.renovacion_automatica 
+    from
+        memberships m1_0 
+    left join
+        clients c1_0 
+            on c1_0.user_id=m1_0.client_id 
+    where
+        c1_0.user_id=?
+Hibernate: 
+    select
+        p1_0.id,
+        p1_0.client_id,
+        p1_0.created_at,
+        p1_0.estado,
+        p1_0.fecha_pago,
+        p1_0.membership_id,
+        p1_0.metodo_pago,
+        p1_0.monto,
+        p1_0.observaciones,
+        p1_0.referencia 
+    from
+        payments p1_0 
+    left join
+        clients c1_0 
+            on c1_0.user_id=p1_0.client_id 
+    where
+        c1_0.user_id=?
+Hibernate: 
+    select
+        r1_0.id,
+        r1_0.activa,
+        r1_0.client_id,
+        r1_0.created_at,
+        r1_0.fecha_generacion,
+        r1_0.frecuencia_semanal,
+        r1_0.generated_by_system,
+        r1_0.nivel_dificultad,
+        r1_0.objetivo,
+        r1_0.updated_at 
+    from
+        routines r1_0 
+    left join
+        clients c1_0 
+            on c1_0.user_id=r1_0.client_id 
+    where
+        c1_0.user_id=?
+Hibernate: 
+    select
+        re1_0.id,
+        re1_0.descanso_segundos,
+        re1_0.dia_semana,
+        re1_0.exercise_id,
+        re1_0.notas,
+        re1_0.orden_ejercicio,
+        re1_0.repeticiones,
+        re1_0.routine_id,
+        re1_0.series 
+    from
+        routine_exercises re1_0 
+    left join
+        routines r1_0 
+            on r1_0.id=re1_0.routine_id 
+    where
+        r1_0.id=?
+Hibernate: 
+    select
+        e1_0.id,
+        e1_0.activo,
+        e1_0.created_at,
+        e1_0.descanso_segundos,
+        e1_0.descripcion,
+        e1_0.equipamiento,
+        e1_0.grupo_muscular,
+        e1_0.nombre,
+        e1_0.repeticiones,
+        e1_0.series,
+        e1_0.video_url 
+    from
+        exercises e1_0 
+    where
+        e1_0.id=?
+2026-05-27T17:48:45.797-05:00  INFO 17780 --- [           main] com.gimnasio.config.DemoDevDataSeeder    : Semilla demo completada (solo entorno desarrollo).
+Hibernate: 
+    select
+        u1_0.id,
+        case 
+            when u1_1.user_id is not null 
+                then 1 
+            when u1_2.user_id is not null 
+                then 2 
+            when u1_3.user_id is not null 
+                then 3 
+        end,
+        u1_0.activo,
+        u1_0.apellido,
+        u1_0.contrasena,
+        u1_0.email,
+        u1_0.documento,
+        u1_0.fecha_registro,
+        u1_0.nombre,
+        u1_0.rol,
+        u1_0.status,
+        u1_0.telefono,
+        u1_0.updated_at,
+        u1_1.created_at,
+        u1_1.nivel_acceso,
+        u1_2.active,
+        u1_2.altura,
+        u1_2.created_at,
+        u1_2.fecha_nacimiento,
+        u1_2.frecuencia_entrenamiento,
+        u1_2.genero,
+        u1_2.imc,
+        u1_2.instructor_id,
+        u1_2.user_id,
+        u1_2.objetivo,
+        u1_2.peso,
+        u1_2.quiere_instructor,
+        u1_3.anos_experiencia,
+        u1_3.certificaciones,
+        u1_3.contract_type,
+        u1_3.created_at,
+        u1_3.disponible,
+        u1_3.especialidad,
+        u1_3.fecha_contratacion,
+        u1_3.horario_trabajo,
+        u1_3.salario 
+    from
+        users u1_0 
+    left join
+        administradores u1_1 
+            on u1_0.id=u1_1.user_id 
+    left join
+        clients u1_2 
+            on u1_0.id=u1_2.user_id 
+    left join
+        instructors u1_3 
+            on u1_0.id=u1_3.user_id 
+    where
+        u1_0.email=?
+Hibernate: 
+    select
+        u1_0.id,
+        case 
+            when u1_1.user_id is not null 
+                then 1 
+            when u1_2.user_id is not null 
+                then 2 
+            when u1_3.user_id is not null 
+                then 3 
+        end,
+        u1_0.activo,
+        u1_0.apellido,
+        u1_0.contrasena,
+        u1_0.email,
+        u1_0.documento,
+        u1_0.fecha_registro,
+        u1_0.nombre,
+        u1_0.rol,
+        u1_0.status,
+        u1_0.telefono,
+        u1_0.updated_at,
+        u1_1.created_at,
+        u1_1.nivel_acceso,
+        u1_2.active,
+        u1_2.altura,
+        u1_2.created_at,
+        u1_2.fecha_nacimiento,
+        u1_2.frecuencia_entrenamiento,
+        u1_2.genero,
+        u1_2.imc,
+        u1_2.instructor_id,
+        u1_2.user_id,
+        u1_2.objetivo,
+        u1_2.peso,
+        u1_2.quiere_instructor,
+        u1_3.anos_experiencia,
+        u1_3.certificaciones,
+        u1_3.contract_type,
+        u1_3.created_at,
+        u1_3.disponible,
+        u1_3.especialidad,
+        u1_3.fecha_contratacion,
+        u1_3.horario_trabajo,
+        u1_3.salario 
+    from
+        users u1_0 
+    left join
+        administradores u1_1 
+            on u1_0.id=u1_1.user_id 
+    left join
+        clients u1_2 
+            on u1_0.id=u1_2.user_id 
+    left join
+        instructors u1_3 
+            on u1_0.id=u1_3.user_id 
+    where
+        u1_0.email=?
+Hibernate: 
+    select
+        u1_0.id,
+        case 
+            when u1_1.user_id is not null 
+                then 1 
+            when u1_2.user_id is not null 
+                then 2 
+            when u1_3.user_id is not null 
+                then 3 
+        end,
+        u1_0.activo,
+        u1_0.apellido,
+        u1_0.contrasena,
+        u1_0.email,
+        u1_0.documento,
+        u1_0.fecha_registro,
+        u1_0.nombre,
+        u1_0.rol,
+        u1_0.status,
+        u1_0.telefono,
+        u1_0.updated_at,
+        u1_1.created_at,
+        u1_1.nivel_acceso,
+        u1_2.active,
+        u1_2.altura,
+        u1_2.created_at,
+        u1_2.fecha_nacimiento,
+        u1_2.frecuencia_entrenamiento,
+        u1_2.genero,
+        u1_2.imc,
+        u1_2.instructor_id,
+        u1_2.user_id,
+        u1_2.objetivo,
+        u1_2.peso,
+        u1_2.quiere_instructor,
+        u1_3.anos_experiencia,
+        u1_3.certificaciones,
+        u1_3.contract_type,
+        u1_3.created_at,
+        u1_3.disponible,
+        u1_3.especialidad,
+        u1_3.fecha_contratacion,
+        u1_3.horario_trabajo,
+        u1_3.salario 
+    from
+        users u1_0 
+    left join
+        administradores u1_1 
+            on u1_0.id=u1_1.user_id 
+    left join
+        clients u1_2 
+            on u1_0.id=u1_2.user_id 
+    left join
+        instructors u1_3 
+            on u1_0.id=u1_3.user_id 
+    where
+        u1_0.email=?
+Hibernate: 
+    select
+        u1_0.id,
+        case 
+            when u1_1.user_id is not null 
+                then 1 
+            when u1_2.user_id is not null 
+                then 2 
+            when u1_3.user_id is not null 
+                then 3 
+        end,
+        u1_0.activo,
+        u1_0.apellido,
+        u1_0.contrasena,
+        u1_0.email,
+        u1_0.documento,
+        u1_0.fecha_registro,
+        u1_0.nombre,
+        u1_0.rol,
+        u1_0.status,
+        u1_0.telefono,
+        u1_0.updated_at,
+        u1_1.created_at,
+        u1_1.nivel_acceso,
+        u1_2.active,
+        u1_2.altura,
+        u1_2.created_at,
+        u1_2.fecha_nacimiento,
+        u1_2.frecuencia_entrenamiento,
+        u1_2.genero,
+        u1_2.imc,
+        u1_2.instructor_id,
+        u1_2.user_id,
+        u1_2.objetivo,
+        u1_2.peso,
+        u1_2.quiere_instructor,
+        u1_3.anos_experiencia,
+        u1_3.certificaciones,
+        u1_3.contract_type,
+        u1_3.created_at,
+        u1_3.disponible,
+        u1_3.especialidad,
+        u1_3.fecha_contratacion,
+        u1_3.horario_trabajo,
+        u1_3.salario 
+    from
+        users u1_0 
+    left join
+        administradores u1_1 
+            on u1_0.id=u1_1.user_id 
+    left join
+        clients u1_2 
+            on u1_0.id=u1_2.user_id 
+    left join
+        instructors u1_3 
+            on u1_0.id=u1_3.user_id 
+    where
+        u1_0.email=?
+Hibernate: 
+    select
+        u1_0.id,
+        case 
+            when u1_1.user_id is not null 
+                then 1 
+            when u1_2.user_id is not null 
+                then 2 
+            when u1_3.user_id is not null 
+                then 3 
+        end,
+        u1_0.activo,
+        u1_0.apellido,
+        u1_0.contrasena,
+        u1_0.email,
+        u1_0.documento,
+        u1_0.fecha_registro,
+        u1_0.nombre,
+        u1_0.rol,
+        u1_0.status,
+        u1_0.telefono,
+        u1_0.updated_at,
+        u1_1.created_at,
+        u1_1.nivel_acceso,
+        u1_2.active,
+        u1_2.altura,
+        u1_2.created_at,
+        u1_2.fecha_nacimiento,
+        u1_2.frecuencia_entrenamiento,
+        u1_2.genero,
+        u1_2.imc,
+        u1_2.instructor_id,
+        u1_2.user_id,
+        u1_2.objetivo,
+        u1_2.peso,
+        u1_2.quiere_instructor,
+        u1_3.anos_experiencia,
+        u1_3.certificaciones,
+        u1_3.contract_type,
+        u1_3.created_at,
+        u1_3.disponible,
+        u1_3.especialidad,
+        u1_3.fecha_contratacion,
+        u1_3.horario_trabajo,
+        u1_3.salario 
+    from
+        users u1_0 
+    left join
+        administradores u1_1 
+            on u1_0.id=u1_1.user_id 
+    left join
+        clients u1_2 
+            on u1_0.id=u1_2.user_id 
+    left join
+        instructors u1_3 
+            on u1_0.id=u1_3.user_id 
+    where
+        u1_0.email=?
+Hibernate: 
+    select
+        c1_0.user_id,
+        c1_1.activo,
+        c1_1.apellido,
+        c1_1.contrasena,
+        c1_1.email,
+        c1_1.documento,
+        c1_1.fecha_registro,
+        c1_1.nombre,
+        c1_1.rol,
+        c1_1.status,
+        c1_1.telefono,
+        c1_1.updated_at,
+        c1_0.active,
+        c1_0.altura,
+        c1_0.created_at,
+        c1_0.fecha_nacimiento,
+        c1_0.frecuencia_entrenamiento,
+        c1_0.genero,
+        c1_0.imc,
+        c1_0.instructor_id,
+        c1_0.objetivo,
+        c1_0.peso,
+        c1_0.quiere_instructor 
+    from
+        clients c1_0 
+    join
+        users c1_1 
+            on c1_0.user_id=c1_1.id
+Hibernate: 
+    select
+        i1_0.user_id,
+        i1_1.activo,
+        i1_1.apellido,
+        i1_1.contrasena,
+        i1_1.email,
+        i1_1.documento,
+        i1_1.fecha_registro,
+        i1_1.nombre,
+        i1_1.rol,
+        i1_1.status,
+        i1_1.telefono,
+        i1_1.updated_at,
+        i1_0.anos_experiencia,
+        i1_0.certificaciones,
+        i1_0.contract_type,
+        i1_0.created_at,
+        i1_0.disponible,
+        i1_0.especialidad,
+        i1_0.fecha_contratacion,
+        i1_0.horario_trabajo,
+        i1_0.salario 
+    from
+        instructors i1_0 
+    join
+        users i1_1 
+            on i1_0.user_id=i1_1.id 
+    where
+        i1_0.user_id=?
+Hibernate: 
+    select
+        m1_0.id,
+        m1_0.activo,
+        m1_0.client_id,
+        c1_0.user_id,
+        c1_1.activo,
+        c1_1.apellido,
+        c1_1.contrasena,
+        c1_1.email,
+        c1_1.documento,
+        c1_1.fecha_registro,
+        c1_1.nombre,
+        c1_1.rol,
+        c1_1.status,
+        c1_1.telefono,
+        c1_1.updated_at,
+        c1_0.active,
+        c1_0.altura,
+        c1_0.created_at,
+        c1_0.fecha_nacimiento,
+        c1_0.frecuencia_entrenamiento,
+        c1_0.genero,
+        c1_0.imc,
+        i1_0.user_id,
+        i1_1.activo,
+        i1_1.apellido,
+        i1_1.contrasena,
+        i1_1.email,
+        i1_1.documento,
+        i1_1.fecha_registro,
+        i1_1.nombre,
+        i1_1.rol,
+        i1_1.status,
+        i1_1.telefono,
+        i1_1.updated_at,
+        i1_0.anos_experiencia,
+        i1_0.certificaciones,
+        i1_0.contract_type,
+        i1_0.created_at,
+        i1_0.disponible,
+        i1_0.especialidad,
+        i1_0.fecha_contratacion,
+        i1_0.horario_trabajo,
+        i1_0.salario,
+        c1_0.objetivo,
+        c1_0.peso,
+        c1_0.quiere_instructor,
+        r1_0.id,
+        r1_0.activa,
+        r1_0.client_id,
+        r1_0.created_at,
+        r1_0.fecha_generacion,
+        r1_0.frecuencia_semanal,
+        r1_0.generated_by_system,
+        r1_0.nivel_dificultad,
+        r1_0.objetivo,
+        r1_0.updated_at,
+        m1_0.created_at,
+        m1_0.estado,
+        m1_0.fecha_inicio,
+        m1_0.fecha_vencimiento,
+        m1_0.plan_id,
+        p1_0.id,
+        p1_0.activo,
+        p1_0.beneficios,
+        p1_0.created_at,
+        p1_0.descripcion,
+        p1_0.duracion_meses,
+        p1_0.nombre,
+        p1_0.precio,
+        p1_0.tipo,
+        m1_0.renovacion_automatica 
+    from
+        memberships m1_0 
+    join
+        clients c1_0 
+            on c1_0.user_id=m1_0.client_id 
+    join
+        users c1_1 
+            on c1_0.user_id=c1_1.id 
+    left join
+        instructors i1_0 
+            on i1_0.user_id=c1_0.instructor_id 
+    left join
+        users i1_1 
+            on i1_0.user_id=i1_1.id 
+    left join
+        routines r1_0 
+            on c1_0.user_id=r1_0.client_id 
+    join
+        membership_plans p1_0 
+            on p1_0.id=m1_0.plan_id 
+    where
+        m1_0.client_id=?
+Hibernate: 
+    select
+        i1_0.user_id,
+        i1_1.activo,
+        i1_1.apellido,
+        i1_1.contrasena,
+        i1_1.email,
+        i1_1.documento,
+        i1_1.fecha_registro,
+        i1_1.nombre,
+        i1_1.rol,
+        i1_1.status,
+        i1_1.telefono,
+        i1_1.updated_at,
+        i1_0.anos_experiencia,
+        i1_0.certificaciones,
+        i1_0.contract_type,
+        i1_0.created_at,
+        i1_0.disponible,
+        i1_0.especialidad,
+        i1_0.fecha_contratacion,
+        i1_0.horario_trabajo,
+        i1_0.salario 
+    from
+        instructors i1_0 
+    join
+        users i1_1 
+            on i1_0.user_id=i1_1.id
+Hibernate: 
+    select
+        p1_0.id,
+        p1_0.client_id,
+        p1_0.created_at,
+        p1_0.estado,
+        p1_0.fecha_pago,
+        p1_0.membership_id,
+        p1_0.metodo_pago,
+        p1_0.monto,
+        p1_0.observaciones,
+        p1_0.referencia 
+    from
+        payments p1_0 
+    where
+        p1_0.estado=?
+Hibernate: 
+    select
+        m1_0.id,
+        m1_0.activo,
+        m1_0.client_id,
+        m1_0.created_at,
+        m1_0.estado,
+        m1_0.fecha_inicio,
+        m1_0.fecha_vencimiento,
+        m1_0.plan_id,
+        m1_0.renovacion_automatica 
+    from
+        memberships m1_0 
+    where
+        m1_0.estado=?
+Hibernate: 
+    select
+        u1_0.id,
+        case 
+            when u1_1.user_id is not null 
+                then 1 
+            when u1_2.user_id is not null 
+                then 2 
+            when u1_3.user_id is not null 
+                then 3 
+        end,
+        u1_0.activo,
+        u1_0.apellido,
+        u1_0.contrasena,
+        u1_0.email,
+        u1_0.documento,
+        u1_0.fecha_registro,
+        u1_0.nombre,
+        u1_0.rol,
+        u1_0.status,
+        u1_0.telefono,
+        u1_0.updated_at,
+        u1_1.created_at,
+        u1_1.nivel_acceso,
+        u1_2.active,
+        u1_2.altura,
+        u1_2.created_at,
+        u1_2.fecha_nacimiento,
+        u1_2.frecuencia_entrenamiento,
+        u1_2.genero,
+        u1_2.imc,
+        u1_2.instructor_id,
+        u1_2.user_id,
+        u1_2.objetivo,
+        u1_2.peso,
+        u1_2.quiere_instructor,
+        u1_3.anos_experiencia,
+        u1_3.certificaciones,
+        u1_3.contract_type,
+        u1_3.created_at,
+        u1_3.disponible,
+        u1_3.especialidad,
+        u1_3.fecha_contratacion,
+        u1_3.horario_trabajo,
+        u1_3.salario 
+    from
+        users u1_0 
+    left join
+        administradores u1_1 
+            on u1_0.id=u1_1.user_id 
+    left join
+        clients u1_2 
+            on u1_0.id=u1_2.user_id 
+    left join
+        instructors u1_3 
+            on u1_0.id=u1_3.user_id 
+    where
+        u1_0.email=?
+Hibernate: 
+    select
+        u1_0.id,
+        case 
+            when u1_1.user_id is not null 
+                then 1 
+            when u1_2.user_id is not null 
+                then 2 
+            when u1_3.user_id is not null 
+                then 3 
+        end,
+        u1_0.activo,
+        u1_0.apellido,
+        u1_0.contrasena,
+        u1_0.email,
+        u1_0.documento,
+        u1_0.fecha_registro,
+        u1_0.nombre,
+        u1_0.rol,
+        u1_0.status,
+        u1_0.telefono,
+        u1_0.updated_at,
+        u1_1.created_at,
+        u1_1.nivel_acceso,
+        u1_2.active,
+        u1_2.altura,
+        u1_2.created_at,
+        u1_2.fecha_nacimiento,
+        u1_2.frecuencia_entrenamiento,
+        u1_2.genero,
+        u1_2.imc,
+        u1_2.instructor_id,
+        u1_2.user_id,
+        u1_2.objetivo,
+        u1_2.peso,
+        u1_2.quiere_instructor,
+        u1_3.anos_experiencia,
+        u1_3.certificaciones,
+        u1_3.contract_type,
+        u1_3.created_at,
+        u1_3.disponible,
+        u1_3.especialidad,
+        u1_3.fecha_contratacion,
+        u1_3.horario_trabajo,
+        u1_3.salario 
+    from
+        users u1_0 
+    left join
+        administradores u1_1 
+            on u1_0.id=u1_1.user_id 
+    left join
+        clients u1_2 
+            on u1_0.id=u1_2.user_id 
+    left join
+        instructors u1_3 
+            on u1_0.id=u1_3.user_id 
+    where
+        u1_0.email=?
+Hibernate: 
+    select
+        u1_0.id,
+        case 
+            when u1_1.user_id is not null 
+                then 1 
+            when u1_2.user_id is not null 
+                then 2 
+            when u1_3.user_id is not null 
+                then 3 
+        end,
+        u1_0.activo,
+        u1_0.apellido,
+        u1_0.contrasena,
+        u1_0.email,
+        u1_0.documento,
+        u1_0.fecha_registro,
+        u1_0.nombre,
+        u1_0.rol,
+        u1_0.status,
+        u1_0.telefono,
+        u1_0.updated_at,
+        u1_1.created_at,
+        u1_1.nivel_acceso,
+        u1_2.active,
+        u1_2.altura,
+        u1_2.created_at,
+        u1_2.fecha_nacimiento,
+        u1_2.frecuencia_entrenamiento,
+        u1_2.genero,
+        u1_2.imc,
+        u1_2.instructor_id,
+        u1_2.user_id,
+        u1_2.objetivo,
+        u1_2.peso,
+        u1_2.quiere_instructor,
+        u1_3.anos_experiencia,
+        u1_3.certificaciones,
+        u1_3.contract_type,
+        u1_3.created_at,
+        u1_3.disponible,
+        u1_3.especialidad,
+        u1_3.fecha_contratacion,
+        u1_3.horario_trabajo,
+        u1_3.salario 
+    from
+        users u1_0 
+    left join
+        administradores u1_1 
+            on u1_0.id=u1_1.user_id 
+    left join
+        clients u1_2 
+            on u1_0.id=u1_2.user_id 
+    left join
+        instructors u1_3 
+            on u1_0.id=u1_3.user_id 
+    where
+        u1_0.email=?
+Hibernate: 
+    select
+        u1_0.id,
+        case 
+            when u1_1.user_id is not null 
+                then 1 
+            when u1_2.user_id is not null 
+                then 2 
+            when u1_3.user_id is not null 
+                then 3 
+        end,
+        u1_0.activo,
+        u1_0.apellido,
+        u1_0.contrasena,
+        u1_0.email,
+        u1_0.documento,
+        u1_0.fecha_registro,
+        u1_0.nombre,
+        u1_0.rol,
+        u1_0.status,
+        u1_0.telefono,
+        u1_0.updated_at,
+        u1_1.created_at,
+        u1_1.nivel_acceso,
+        u1_2.active,
+        u1_2.altura,
+        u1_2.created_at,
+        u1_2.fecha_nacimiento,
+        u1_2.frecuencia_entrenamiento,
+        u1_2.genero,
+        u1_2.imc,
+        u1_2.instructor_id,
+        u1_2.user_id,
+        u1_2.objetivo,
+        u1_2.peso,
+        u1_2.quiere_instructor,
+        u1_3.anos_experiencia,
+        u1_3.certificaciones,
+        u1_3.contract_type,
+        u1_3.created_at,
+        u1_3.disponible,
+        u1_3.especialidad,
+        u1_3.fecha_contratacion,
+        u1_3.horario_trabajo,
+        u1_3.salario 
+    from
+        users u1_0 
+    left join
+        administradores u1_1 
+            on u1_0.id=u1_1.user_id 
+    left join
+        clients u1_2 
+            on u1_0.id=u1_2.user_id 
+    left join
+        instructors u1_3 
+            on u1_0.id=u1_3.user_id 
+    where
+        u1_0.email=?
+Hibernate: 
+    select
+        u1_0.id,
+        case 
+            when u1_1.user_id is not null 
+                then 1 
+            when u1_2.user_id is not null 
+                then 2 
+            when u1_3.user_id is not null 
+                then 3 
+        end,
+        u1_0.activo,
+        u1_0.apellido,
+        u1_0.contrasena,
+        u1_0.email,
+        u1_0.documento,
+        u1_0.fecha_registro,
+        u1_0.nombre,
+        u1_0.rol,
+        u1_0.status,
+        u1_0.telefono,
+        u1_0.updated_at,
+        u1_1.created_at,
+        u1_1.nivel_acceso,
+        u1_2.active,
+        u1_2.altura,
+        u1_2.created_at,
+        u1_2.fecha_nacimiento,
+        u1_2.frecuencia_entrenamiento,
+        u1_2.genero,
+        u1_2.imc,
+        u1_2.instructor_id,
+        u1_2.user_id,
+        u1_2.objetivo,
+        u1_2.peso,
+        u1_2.quiere_instructor,
+        u1_3.anos_experiencia,
+        u1_3.certificaciones,
+        u1_3.contract_type,
+        u1_3.created_at,
+        u1_3.disponible,
+        u1_3.especialidad,
+        u1_3.fecha_contratacion,
+        u1_3.horario_trabajo,
+        u1_3.salario 
+    from
+        users u1_0 
+    left join
+        administradores u1_1 
+            on u1_0.id=u1_1.user_id 
+    left join
+        clients u1_2 
+            on u1_0.id=u1_2.user_id 
+    left join
+        instructors u1_3 
+            on u1_0.id=u1_3.user_id 
+    where
+        u1_0.email=?
+Hibernate: 
+    select
+        u1_0.id,
+        case 
+            when u1_1.user_id is not null 
+                then 1 
+            when u1_2.user_id is not null 
+                then 2 
+            when u1_3.user_id is not null 
+                then 3 
+        end,
+        u1_0.activo,
+        u1_0.apellido,
+        u1_0.contrasena,
+        u1_0.email,
+        u1_0.documento,
+        u1_0.fecha_registro,
+        u1_0.nombre,
+        u1_0.rol,
+        u1_0.status,
+        u1_0.telefono,
+        u1_0.updated_at,
+        u1_1.created_at,
+        u1_1.nivel_acceso,
+        u1_2.active,
+        u1_2.altura,
+        u1_2.created_at,
+        u1_2.fecha_nacimiento,
+        u1_2.frecuencia_entrenamiento,
+        u1_2.genero,
+        u1_2.imc,
+        u1_2.instructor_id,
+        u1_2.user_id,
+        u1_2.objetivo,
+        u1_2.peso,
+        u1_2.quiere_instructor,
+        u1_3.anos_experiencia,
+        u1_3.certificaciones,
+        u1_3.contract_type,
+        u1_3.created_at,
+        u1_3.disponible,
+        u1_3.especialidad,
+        u1_3.fecha_contratacion,
+        u1_3.horario_trabajo,
+        u1_3.salario 
+    from
+        users u1_0 
+    left join
+        administradores u1_1 
+            on u1_0.id=u1_1.user_id 
+    left join
+        clients u1_2 
+            on u1_0.id=u1_2.user_id 
+    left join
+        instructors u1_3 
+            on u1_0.id=u1_3.user_id 
+    where
+        u1_0.email=?
+Hibernate: 
+    select
+        i1_0.user_id,
+        i1_1.activo,
+        i1_1.apellido,
+        i1_1.contrasena,
+        i1_1.email,
+        i1_1.documento,
+        i1_1.fecha_registro,
+        i1_1.nombre,
+        i1_1.rol,
+        i1_1.status,
+        i1_1.telefono,
+        i1_1.updated_at,
+        i1_0.anos_experiencia,
+        i1_0.certificaciones,
+        i1_0.contract_type,
+        i1_0.created_at,
+        i1_0.disponible,
+        i1_0.especialidad,
+        i1_0.fecha_contratacion,
+        i1_0.horario_trabajo,
+        i1_0.salario 
+    from
+        instructors i1_0 
+    join
+        users i1_1 
+            on i1_0.user_id=i1_1.id 
+    where
+        i1_0.user_id=?
+Hibernate: 
+    select
+        m1_0.id,
+        m1_0.activo,
+        m1_0.client_id,
+        c1_0.user_id,
+        c1_1.activo,
+        c1_1.apellido,
+        c1_1.contrasena,
+        c1_1.email,
+        c1_1.documento,
+        c1_1.fecha_registro,
+        c1_1.nombre,
+        c1_1.rol,
+        c1_1.status,
+        c1_1.telefono,
+        c1_1.updated_at,
+        c1_0.active,
+        c1_0.altura,
+        c1_0.created_at,
+        c1_0.fecha_nacimiento,
+        c1_0.frecuencia_entrenamiento,
+        c1_0.genero,
+        c1_0.imc,
+        i1_0.user_id,
+        i1_1.activo,
+        i1_1.apellido,
+        i1_1.contrasena,
+        i1_1.email,
+        i1_1.documento,
+        i1_1.fecha_registro,
+        i1_1.nombre,
+        i1_1.rol,
+        i1_1.status,
+        i1_1.telefono,
+        i1_1.updated_at,
+        i1_0.anos_experiencia,
+        i1_0.certificaciones,
+        i1_0.contract_type,
+        i1_0.created_at,
+        i1_0.disponible,
+        i1_0.especialidad,
+        i1_0.fecha_contratacion,
+        i1_0.horario_trabajo,
+        i1_0.salario,
+        c1_0.objetivo,
+        c1_0.peso,
+        c1_0.quiere_instructor,
+        r1_0.id,
+        r1_0.activa,
+        r1_0.client_id,
+        r1_0.created_at,
+        r1_0.fecha_generacion,
+        r1_0.frecuencia_semanal,
+        r1_0.generated_by_system,
+        r1_0.nivel_dificultad,
+        r1_0.objetivo,
+        r1_0.updated_at,
+        m1_0.created_at,
+        m1_0.estado,
+        m1_0.fecha_inicio,
+        m1_0.fecha_vencimiento,
+        m1_0.plan_id,
+        p1_0.id,
+        p1_0.activo,
+        p1_0.beneficios,
+        p1_0.created_at,
+        p1_0.descripcion,
+        p1_0.duracion_meses,
+        p1_0.nombre,
+        p1_0.precio,
+        p1_0.tipo,
+        m1_0.renovacion_automatica 
+    from
+        memberships m1_0 
+    join
+        clients c1_0 
+            on c1_0.user_id=m1_0.client_id 
+    join
+        users c1_1 
+            on c1_0.user_id=c1_1.id 
+    left join
+        instructors i1_0 
+            on i1_0.user_id=c1_0.instructor_id 
+    left join
+        users i1_1 
+            on i1_0.user_id=i1_1.id 
+    left join
+        routines r1_0 
+            on c1_0.user_id=r1_0.client_id 
+    join
+        membership_plans p1_0 
+            on p1_0.id=m1_0.plan_id 
+    where
+        m1_0.client_id=?
+Hibernate: 
+    select
+        u1_0.id,
+        case 
+            when u1_1.user_id is not null 
+                then 1 
+            when u1_2.user_id is not null 
+                then 2 
+            when u1_3.user_id is not null 
+                then 3 
+        end,
+        u1_0.activo,
+        u1_0.apellido,
+        u1_0.contrasena,
+        u1_0.email,
+        u1_0.documento,
+        u1_0.fecha_registro,
+        u1_0.nombre,
+        u1_0.rol,
+        u1_0.status,
+        u1_0.telefono,
+        u1_0.updated_at,
+        u1_1.created_at,
+        u1_1.nivel_acceso,
+        u1_2.active,
+        u1_2.altura,
+        u1_2.created_at,
+        u1_2.fecha_nacimiento,
+        u1_2.frecuencia_entrenamiento,
+        u1_2.genero,
+        u1_2.imc,
+        u1_2.instructor_id,
+        u1_2.user_id,
+        u1_2.objetivo,
+        u1_2.peso,
+        u1_2.quiere_instructor,
+        u1_3.anos_experiencia,
+        u1_3.certificaciones,
+        u1_3.contract_type,
+        u1_3.created_at,
+        u1_3.disponible,
+        u1_3.especialidad,
+        u1_3.fecha_contratacion,
+        u1_3.horario_trabajo,
+        u1_3.salario 
+    from
+        users u1_0 
+    left join
+        administradores u1_1 
+            on u1_0.id=u1_1.user_id 
+    left join
+        clients u1_2 
+            on u1_0.id=u1_2.user_id 
+    left join
+        instructors u1_3 
+            on u1_0.id=u1_3.user_id 
+    where
+        u1_0.email=?
+Hibernate: 
+    select
+        u1_0.id,
+        case 
+            when u1_1.user_id is not null 
+                then 1 
+            when u1_2.user_id is not null 
+                then 2 
+            when u1_3.user_id is not null 
+                then 3 
+        end,
+        u1_0.activo,
+        u1_0.apellido,
+        u1_0.contrasena,
+        u1_0.email,
+        u1_0.documento,
+        u1_0.fecha_registro,
+        u1_0.nombre,
+        u1_0.rol,
+        u1_0.status,
+        u1_0.telefono,
+        u1_0.updated_at,
+        u1_1.created_at,
+        u1_1.nivel_acceso,
+        u1_2.active,
+        u1_2.altura,
+        u1_2.created_at,
+        u1_2.fecha_nacimiento,
+        u1_2.frecuencia_entrenamiento,
+        u1_2.genero,
+        u1_2.imc,
+        u1_2.instructor_id,
+        u1_2.user_id,
+        u1_2.objetivo,
+        u1_2.peso,
+        u1_2.quiere_instructor,
+        u1_3.anos_experiencia,
+        u1_3.certificaciones,
+        u1_3.contract_type,
+        u1_3.created_at,
+        u1_3.disponible,
+        u1_3.especialidad,
+        u1_3.fecha_contratacion,
+        u1_3.horario_trabajo,
+        u1_3.salario 
+    from
+        users u1_0 
+    left join
+        administradores u1_1 
+            on u1_0.id=u1_1.user_id 
+    left join
+        clients u1_2 
+            on u1_0.id=u1_2.user_id 
+    left join
+        instructors u1_3 
+            on u1_0.id=u1_3.user_id 
+    where
+        u1_0.email=?
+Hibernate: 
+    select
+        i1_0.user_id,
+        i1_1.activo,
+        i1_1.apellido,
+        i1_1.contrasena,
+        i1_1.email,
+        i1_1.documento,
+        i1_1.fecha_registro,
+        i1_1.nombre,
+        i1_1.rol,
+        i1_1.status,
+        i1_1.telefono,
+        i1_1.updated_at,
+        i1_0.anos_experiencia,
+        i1_0.certificaciones,
+        i1_0.contract_type,
+        i1_0.created_at,
+        i1_0.disponible,
+        i1_0.especialidad,
+        i1_0.fecha_contratacion,
+        i1_0.horario_trabajo,
+        i1_0.salario 
+    from
+        instructors i1_0 
+    join
+        users i1_1 
+            on i1_0.user_id=i1_1.id 
+    where
+        i1_0.user_id=?
+Hibernate: 
+    select
+        m1_0.id,
+        m1_0.activo,
+        m1_0.client_id,
+        c1_0.user_id,
+        c1_1.activo,
+        c1_1.apellido,
+        c1_1.contrasena,
+        c1_1.email,
+        c1_1.documento,
+        c1_1.fecha_registro,
+        c1_1.nombre,
+        c1_1.rol,
+        c1_1.status,
+        c1_1.telefono,
+        c1_1.updated_at,
+        c1_0.active,
+        c1_0.altura,
+        c1_0.created_at,
+        c1_0.fecha_nacimiento,
+        c1_0.frecuencia_entrenamiento,
+        c1_0.genero,
+        c1_0.imc,
+        i1_0.user_id,
+        i1_1.activo,
+        i1_1.apellido,
+        i1_1.contrasena,
+        i1_1.email,
+        i1_1.documento,
+        i1_1.fecha_registro,
+        i1_1.nombre,
+        i1_1.rol,
+        i1_1.status,
+        i1_1.telefono,
+        i1_1.updated_at,
+        i1_0.anos_experiencia,
+        i1_0.certificaciones,
+        i1_0.contract_type,
+        i1_0.created_at,
+        i1_0.disponible,
+        i1_0.especialidad,
+        i1_0.fecha_contratacion,
+        i1_0.horario_trabajo,
+        i1_0.salario,
+        c1_0.objetivo,
+        c1_0.peso,
+        c1_0.quiere_instructor,
+        r1_0.id,
+        r1_0.activa,
+        r1_0.client_id,
+        r1_0.created_at,
+        r1_0.fecha_generacion,
+        r1_0.frecuencia_semanal,
+        r1_0.generated_by_system,
+        r1_0.nivel_dificultad,
+        r1_0.objetivo,
+        r1_0.updated_at,
+        m1_0.created_at,
+        m1_0.estado,
+        m1_0.fecha_inicio,
+        m1_0.fecha_vencimiento,
+        m1_0.plan_id,
+        p1_0.id,
+        p1_0.activo,
+        p1_0.beneficios,
+        p1_0.created_at,
+        p1_0.descripcion,
+        p1_0.duracion_meses,
+        p1_0.nombre,
+        p1_0.precio,
+        p1_0.tipo,
+        m1_0.renovacion_automatica 
+    from
+        memberships m1_0 
+    join
+        clients c1_0 
+            on c1_0.user_id=m1_0.client_id 
+    join
+        users c1_1 
+            on c1_0.user_id=c1_1.id 
+    left join
+        instructors i1_0 
+            on i1_0.user_id=c1_0.instructor_id 
+    left join
+        users i1_1 
+            on i1_0.user_id=i1_1.id 
+    left join
+        routines r1_0 
+            on c1_0.user_id=r1_0.client_id 
+    join
+        membership_plans p1_0 
+            on p1_0.id=m1_0.plan_id 
+    where
+        m1_0.client_id=?
+Hibernate: 
+    select
+        u1_0.id,
+        case 
+            when u1_1.user_id is not null 
+                then 1 
+            when u1_2.user_id is not null 
+                then 2 
+            when u1_3.user_id is not null 
+                then 3 
+        end,
+        u1_0.activo,
+        u1_0.apellido,
+        u1_0.contrasena,
+        u1_0.email,
+        u1_0.documento,
+        u1_0.fecha_registro,
+        u1_0.nombre,
+        u1_0.rol,
+        u1_0.status,
+        u1_0.telefono,
+        u1_0.updated_at,
+        u1_1.created_at,
+        u1_1.nivel_acceso,
+        u1_2.active,
+        u1_2.altura,
+        u1_2.created_at,
+        u1_2.fecha_nacimiento,
+        u1_2.frecuencia_entrenamiento,
+        u1_2.genero,
+        u1_2.imc,
+        u1_2.instructor_id,
+        u1_2.user_id,
+        u1_2.objetivo,
+        u1_2.peso,
+        u1_2.quiere_instructor,
+        u1_3.anos_experiencia,
+        u1_3.certificaciones,
+        u1_3.contract_type,
+        u1_3.created_at,
+        u1_3.disponible,
+        u1_3.especialidad,
+        u1_3.fecha_contratacion,
+        u1_3.horario_trabajo,
+        u1_3.salario 
+    from
+        users u1_0 
+    left join
+        administradores u1_1 
+            on u1_0.id=u1_1.user_id 
+    left join
+        clients u1_2 
+            on u1_0.id=u1_2.user_id 
+    left join
+        instructors u1_3 
+            on u1_0.id=u1_3.user_id 
+    where
+        u1_0.email=?
+Hibernate: 
+    select
+        i1_0.user_id,
+        i1_1.activo,
+        i1_1.apellido,
+        i1_1.contrasena,
+        i1_1.email,
+        i1_1.documento,
+        i1_1.fecha_registro,
+        i1_1.nombre,
+        i1_1.rol,
+        i1_1.status,
+        i1_1.telefono,
+        i1_1.updated_at,
+        i1_0.anos_experiencia,
+        i1_0.certificaciones,
+        i1_0.contract_type,
+        i1_0.created_at,
+        i1_0.disponible,
+        i1_0.especialidad,
+        i1_0.fecha_contratacion,
+        i1_0.horario_trabajo,
+        i1_0.salario 
+    from
+        instructors i1_0 
+    join
+        users i1_1 
+            on i1_0.user_id=i1_1.id 
+    where
+        i1_0.user_id=?
+Hibernate: 
+    select
+        m1_0.id,
+        m1_0.activo,
+        m1_0.client_id,
+        c1_0.user_id,
+        c1_1.activo,
+        c1_1.apellido,
+        c1_1.contrasena,
+        c1_1.email,
+        c1_1.documento,
+        c1_1.fecha_registro,
+        c1_1.nombre,
+        c1_1.rol,
+        c1_1.status,
+        c1_1.telefono,
+        c1_1.updated_at,
+        c1_0.active,
+        c1_0.altura,
+        c1_0.created_at,
+        c1_0.fecha_nacimiento,
+        c1_0.frecuencia_entrenamiento,
+        c1_0.genero,
+        c1_0.imc,
+        i1_0.user_id,
+        i1_1.activo,
+        i1_1.apellido,
+        i1_1.contrasena,
+        i1_1.email,
+        i1_1.documento,
+        i1_1.fecha_registro,
+        i1_1.nombre,
+        i1_1.rol,
+        i1_1.status,
+        i1_1.telefono,
+        i1_1.updated_at,
+        i1_0.anos_experiencia,
+        i1_0.certificaciones,
+        i1_0.contract_type,
+        i1_0.created_at,
+        i1_0.disponible,
+        i1_0.especialidad,
+        i1_0.fecha_contratacion,
+        i1_0.horario_trabajo,
+        i1_0.salario,
+        c1_0.objetivo,
+        c1_0.peso,
+        c1_0.quiere_instructor,
+        r1_0.id,
+        r1_0.activa,
+        r1_0.client_id,
+        r1_0.created_at,
+        r1_0.fecha_generacion,
+        r1_0.frecuencia_semanal,
+        r1_0.generated_by_system,
+        r1_0.nivel_dificultad,
+        r1_0.objetivo,
+        r1_0.updated_at,
+        m1_0.created_at,
+        m1_0.estado,
+        m1_0.fecha_inicio,
+        m1_0.fecha_vencimiento,
+        m1_0.plan_id,
+        p1_0.id,
+        p1_0.activo,
+        p1_0.beneficios,
+        p1_0.created_at,
+        p1_0.descripcion,
+        p1_0.duracion_meses,
+        p1_0.nombre,
+        p1_0.precio,
+        p1_0.tipo,
+        m1_0.renovacion_automatica 
+    from
+        memberships m1_0 
+    join
+        clients c1_0 
+            on c1_0.user_id=m1_0.client_id 
+    join
+        users c1_1 
+            on c1_0.user_id=c1_1.id 
+    left join
+        instructors i1_0 
+            on i1_0.user_id=c1_0.instructor_id 
+    left join
+        users i1_1 
+            on i1_0.user_id=i1_1.id 
+    left join
+        routines r1_0 
+            on c1_0.user_id=r1_0.client_id 
+    join
+        membership_plans p1_0 
+            on p1_0.id=m1_0.plan_id 
+    where
+        m1_0.client_id=?
+Hibernate: 
+    select
+        u1_0.id,
+        case 
+            when u1_1.user_id is not null 
+                then 1 
+            when u1_2.user_id is not null 
+                then 2 
+            when u1_3.user_id is not null 
+                then 3 
+        end,
+        u1_0.activo,
+        u1_0.apellido,
+        u1_0.contrasena,
+        u1_0.email,
+        u1_0.documento,
+        u1_0.fecha_registro,
+        u1_0.nombre,
+        u1_0.rol,
+        u1_0.status,
+        u1_0.telefono,
+        u1_0.updated_at,
+        u1_1.created_at,
+        u1_1.nivel_acceso,
+        u1_2.active,
+        u1_2.altura,
+        u1_2.created_at,
+        u1_2.fecha_nacimiento,
+        u1_2.frecuencia_entrenamiento,
+        u1_2.genero,
+        u1_2.imc,
+        u1_2.instructor_id,
+        u1_2.user_id,
+        u1_2.objetivo,
+        u1_2.peso,
+        u1_2.quiere_instructor,
+        u1_3.anos_experiencia,
+        u1_3.certificaciones,
+        u1_3.contract_type,
+        u1_3.created_at,
+        u1_3.disponible,
+        u1_3.especialidad,
+        u1_3.fecha_contratacion,
+        u1_3.horario_trabajo,
+        u1_3.salario 
+    from
+        users u1_0 
+    left join
+        administradores u1_1 
+            on u1_0.id=u1_1.user_id 
+    left join
+        clients u1_2 
+            on u1_0.id=u1_2.user_id 
+    left join
+        instructors u1_3 
+            on u1_0.id=u1_3.user_id 
+    where
+        u1_0.email=?
+Hibernate: 
+    select
+        u1_0.id,
+        case 
+            when u1_1.user_id is not null 
+                then 1 
+            when u1_2.user_id is not null 
+                then 2 
+            when u1_3.user_id is not null 
+                then 3 
+        end,
+        u1_0.activo,
+        u1_0.apellido,
+        u1_0.contrasena,
+        u1_0.email,
+        u1_0.documento,
+        u1_0.fecha_registro,
+        u1_0.nombre,
+        u1_0.rol,
+        u1_0.status,
+        u1_0.telefono,
+        u1_0.updated_at,
+        u1_1.created_at,
+        u1_1.nivel_acceso,
+        u1_2.active,
+        u1_2.altura,
+        u1_2.created_at,
+        u1_2.fecha_nacimiento,
+        u1_2.frecuencia_entrenamiento,
+        u1_2.genero,
+        u1_2.imc,
+        u1_2.instructor_id,
+        u1_2.user_id,
+        u1_2.objetivo,
+        u1_2.peso,
+        u1_2.quiere_instructor,
+        u1_3.anos_experiencia,
+        u1_3.certificaciones,
+        u1_3.contract_type,
+        u1_3.created_at,
+        u1_3.disponible,
+        u1_3.especialidad,
+        u1_3.fecha_contratacion,
+        u1_3.horario_trabajo,
+        u1_3.salario 
+    from
+        users u1_0 
+    left join
+        administradores u1_1 
+            on u1_0.id=u1_1.user_id 
+    left join
+        clients u1_2 
+            on u1_0.id=u1_2.user_id 
+    left join
+        instructors u1_3 
+            on u1_0.id=u1_3.user_id 
+    where
+        u1_0.email=?
+Hibernate: 
+    select
+        u1_0.id,
+        case 
+            when u1_1.user_id is not null 
+                then 1 
+            when u1_2.user_id is not null 
+                then 2 
+            when u1_3.user_id is not null 
+                then 3 
+        end,
+        u1_0.activo,
+        u1_0.apellido,
+        u1_0.contrasena,
+        u1_0.email,
+        u1_0.documento,
+        u1_0.fecha_registro,
+        u1_0.nombre,
+        u1_0.rol,
+        u1_0.status,
+        u1_0.telefono,
+        u1_0.updated_at,
+        u1_1.created_at,
+        u1_1.nivel_acceso,
+        u1_2.active,
+        u1_2.altura,
+        u1_2.created_at,
+        u1_2.fecha_nacimiento,
+        u1_2.frecuencia_entrenamiento,
+        u1_2.genero,
+        u1_2.imc,
+        u1_2.instructor_id,
+        u1_2.user_id,
+        u1_2.objetivo,
+        u1_2.peso,
+        u1_2.quiere_instructor,
+        u1_3.anos_experiencia,
+        u1_3.certificaciones,
+        u1_3.contract_type,
+        u1_3.created_at,
+        u1_3.disponible,
+        u1_3.especialidad,
+        u1_3.fecha_contratacion,
+        u1_3.horario_trabajo,
+        u1_3.salario 
+    from
+        users u1_0 
+    left join
+        administradores u1_1 
+            on u1_0.id=u1_1.user_id 
+    left join
+        clients u1_2 
+            on u1_0.id=u1_2.user_id 
+    left join
+        instructors u1_3 
+            on u1_0.id=u1_3.user_id 
+    where
+        u1_0.email=?
+Hibernate: 
+    select
+        i1_0.user_id,
+        i1_1.activo,
+        i1_1.apellido,
+        i1_1.contrasena,
+        i1_1.email,
+        i1_1.documento,
+        i1_1.fecha_registro,
+        i1_1.nombre,
+        i1_1.rol,
+        i1_1.status,
+        i1_1.telefono,
+        i1_1.updated_at,
+        i1_0.anos_experiencia,
+        i1_0.certificaciones,
+        i1_0.contract_type,
+        i1_0.created_at,
+        i1_0.disponible,
+        i1_0.especialidad,
+        i1_0.fecha_contratacion,
+        i1_0.horario_trabajo,
+        i1_0.salario 
+    from
+        instructors i1_0 
+    join
+        users i1_1 
+            on i1_0.user_id=i1_1.id 
+    where
+        i1_0.user_id=?
+Hibernate: 
+    select
+        m1_0.id,
+        m1_0.activo,
+        m1_0.client_id,
+        c1_0.user_id,
+        c1_1.activo,
+        c1_1.apellido,
+        c1_1.contrasena,
+        c1_1.email,
+        c1_1.documento,
+        c1_1.fecha_registro,
+        c1_1.nombre,
+        c1_1.rol,
+        c1_1.status,
+        c1_1.telefono,
+        c1_1.updated_at,
+        c1_0.active,
+        c1_0.altura,
+        c1_0.created_at,
+        c1_0.fecha_nacimiento,
+        c1_0.frecuencia_entrenamiento,
+        c1_0.genero,
+        c1_0.imc,
+        i1_0.user_id,
+        i1_1.activo,
+        i1_1.apellido,
+        i1_1.contrasena,
+        i1_1.email,
+        i1_1.documento,
+        i1_1.fecha_registro,
+        i1_1.nombre,
+        i1_1.rol,
+        i1_1.status,
+        i1_1.telefono,
+        i1_1.updated_at,
+        i1_0.anos_experiencia,
+        i1_0.certificaciones,
+        i1_0.contract_type,
+        i1_0.created_at,
+        i1_0.disponible,
+        i1_0.especialidad,
+        i1_0.fecha_contratacion,
+        i1_0.horario_trabajo,
+        i1_0.salario,
+        c1_0.objetivo,
+        c1_0.peso,
+        c1_0.quiere_instructor,
+        r1_0.id,
+        r1_0.activa,
+        r1_0.client_id,
+        r1_0.created_at,
+        r1_0.fecha_generacion,
+        r1_0.frecuencia_semanal,
+        r1_0.generated_by_system,
+        r1_0.nivel_dificultad,
+        r1_0.objetivo,
+        r1_0.updated_at,
+        m1_0.created_at,
+        m1_0.estado,
+        m1_0.fecha_inicio,
+        m1_0.fecha_vencimiento,
+        m1_0.plan_id,
+        p1_0.id,
+        p1_0.activo,
+        p1_0.beneficios,
+        p1_0.created_at,
+        p1_0.descripcion,
+        p1_0.duracion_meses,
+        p1_0.nombre,
+        p1_0.precio,
+        p1_0.tipo,
+        m1_0.renovacion_automatica 
+    from
+        memberships m1_0 
+    join
+        clients c1_0 
+            on c1_0.user_id=m1_0.client_id 
+    join
+        users c1_1 
+            on c1_0.user_id=c1_1.id 
+    left join
+        instructors i1_0 
+            on i1_0.user_id=c1_0.instructor_id 
+    left join
+        users i1_1 
+            on i1_0.user_id=i1_1.id 
+    left join
+        routines r1_0 
+            on c1_0.user_id=r1_0.client_id 
+    join
+        membership_plans p1_0 
+            on p1_0.id=m1_0.plan_id 
+    where
+        m1_0.client_id=?
+Hibernate: 
+    select
+        u1_0.id,
+        case 
+            when u1_1.user_id is not null 
+                then 1 
+            when u1_2.user_id is not null 
+                then 2 
+            when u1_3.user_id is not null 
+                then 3 
+        end,
+        u1_0.activo,
+        u1_0.apellido,
+        u1_0.contrasena,
+        u1_0.email,
+        u1_0.documento,
+        u1_0.fecha_registro,
+        u1_0.nombre,
+        u1_0.rol,
+        u1_0.status,
+        u1_0.telefono,
+        u1_0.updated_at,
+        u1_1.created_at,
+        u1_1.nivel_acceso,
+        u1_2.active,
+        u1_2.altura,
+        u1_2.created_at,
+        u1_2.fecha_nacimiento,
+        u1_2.frecuencia_entrenamiento,
+        u1_2.genero,
+        u1_2.imc,
+        u1_2.instructor_id,
+        u1_2.user_id,
+        u1_2.objetivo,
+        u1_2.peso,
+        u1_2.quiere_instructor,
+        u1_3.anos_experiencia,
+        u1_3.certificaciones,
+        u1_3.contract_type,
+        u1_3.created_at,
+        u1_3.disponible,
+        u1_3.especialidad,
+        u1_3.fecha_contratacion,
+        u1_3.horario_trabajo,
+        u1_3.salario 
+    from
+        users u1_0 
+    left join
+        administradores u1_1 
+            on u1_0.id=u1_1.user_id 
+    left join
+        clients u1_2 
+            on u1_0.id=u1_2.user_id 
+    left join
+        instructors u1_3 
+            on u1_0.id=u1_3.user_id 
+    where
+        u1_0.email=?
+Hibernate: 
+    select
+        i1_0.user_id,
+        i1_1.activo,
+        i1_1.apellido,
+        i1_1.contrasena,
+        i1_1.email,
+        i1_1.documento,
+        i1_1.fecha_registro,
+        i1_1.nombre,
+        i1_1.rol,
+        i1_1.status,
+        i1_1.telefono,
+        i1_1.updated_at,
+        i1_0.anos_experiencia,
+        i1_0.certificaciones,
+        i1_0.contract_type,
+        i1_0.created_at,
+        i1_0.disponible,
+        i1_0.especialidad,
+        i1_0.fecha_contratacion,
+        i1_0.horario_trabajo,
+        i1_0.salario 
+    from
+        instructors i1_0 
+    join
+        users i1_1 
+            on i1_0.user_id=i1_1.id 
+    where
+        i1_0.user_id=?
+Hibernate: 
+    select
+        c1_0.user_id,
+        c1_1.activo,
+        c1_1.apellido,
+        c1_1.contrasena,
+        c1_1.email,
+        c1_1.documento,
+        c1_1.fecha_registro,
+        c1_1.nombre,
+        c1_1.rol,
+        c1_1.status,
+        c1_1.telefono,
+        c1_1.updated_at,
+        c1_0.active,
+        c1_0.altura,
+        c1_0.created_at,
+        c1_0.fecha_nacimiento,
+        c1_0.frecuencia_entrenamiento,
+        c1_0.genero,
+        c1_0.imc,
+        c1_0.instructor_id,
+        c1_0.objetivo,
+        c1_0.peso,
+        c1_0.quiere_instructor 
+    from
+        clients c1_0 
+    join
+        users c1_1 
+            on c1_0.user_id=c1_1.id 
+    where
+        c1_0.instructor_id=?
+Hibernate: 
+    select
+        m1_0.id,
+        m1_0.activo,
+        m1_0.client_id,
+        c1_0.user_id,
+        c1_1.activo,
+        c1_1.apellido,
+        c1_1.contrasena,
+        c1_1.email,
+        c1_1.documento,
+        c1_1.fecha_registro,
+        c1_1.nombre,
+        c1_1.rol,
+        c1_1.status,
+        c1_1.telefono,
+        c1_1.updated_at,
+        c1_0.active,
+        c1_0.altura,
+        c1_0.created_at,
+        c1_0.fecha_nacimiento,
+        c1_0.frecuencia_entrenamiento,
+        c1_0.genero,
+        c1_0.imc,
+        i1_0.user_id,
+        i1_1.activo,
+        i1_1.apellido,
+        i1_1.contrasena,
+        i1_1.email,
+        i1_1.documento,
+        i1_1.fecha_registro,
+        i1_1.nombre,
+        i1_1.rol,
+        i1_1.status,
+        i1_1.telefono,
+        i1_1.updated_at,
+        i1_0.anos_experiencia,
+        i1_0.certificaciones,
+        i1_0.contract_type,
+        i1_0.created_at,
+        i1_0.disponible,
+        i1_0.especialidad,
+        i1_0.fecha_contratacion,
+        i1_0.horario_trabajo,
+        i1_0.salario,
+        c1_0.objetivo,
+        c1_0.peso,
+        c1_0.quiere_instructor,
+        r1_0.id,
+        r1_0.activa,
+        r1_0.client_id,
+        r1_0.created_at,
+        r1_0.fecha_generacion,
+        r1_0.frecuencia_semanal,
+        r1_0.generated_by_system,
+        r1_0.nivel_dificultad,
+        r1_0.objetivo,
+        r1_0.updated_at,
+        m1_0.created_at,
+        m1_0.estado,
+        m1_0.fecha_inicio,
+        m1_0.fecha_vencimiento,
+        m1_0.plan_id,
+        p1_0.id,
+        p1_0.activo,
+        p1_0.beneficios,
+        p1_0.created_at,
+        p1_0.descripcion,
+        p1_0.duracion_meses,
+        p1_0.nombre,
+        p1_0.precio,
+        p1_0.tipo,
+        m1_0.renovacion_automatica 
+    from
+        memberships m1_0 
+    join
+        clients c1_0 
+            on c1_0.user_id=m1_0.client_id 
+    join
+        users c1_1 
+            on c1_0.user_id=c1_1.id 
+    left join
+        instructors i1_0 
+            on i1_0.user_id=c1_0.instructor_id 
+    left join
+        users i1_1 
+            on i1_0.user_id=i1_1.id 
+    left join
+        routines r1_0 
+            on c1_0.user_id=r1_0.client_id 
+    join
+        membership_plans p1_0 
+            on p1_0.id=m1_0.plan_id 
+    where
+        m1_0.client_id=?
+Hibernate: 
+    select
+        ca1_0.instructor_id,
+        ca1_0.user_id,
+        ca1_1.activo,
+        ca1_1.apellido,
+        ca1_1.contrasena,
+        ca1_1.email,
+        ca1_1.documento,
+        ca1_1.fecha_registro,
+        ca1_1.nombre,
+        ca1_1.rol,
+        ca1_1.status,
+        ca1_1.telefono,
+        ca1_1.updated_at,
+        ca1_0.active,
+        ca1_0.altura,
+        ca1_0.created_at,
+        ca1_0.fecha_nacimiento,
+        ca1_0.frecuencia_entrenamiento,
+        ca1_0.genero,
+        ca1_0.imc,
+        m1_0.id,
+        m1_0.activo,
+        m1_0.client_id,
+        m1_0.created_at,
+        m1_0.estado,
+        m1_0.fecha_inicio,
+        m1_0.fecha_vencimiento,
+        m1_0.plan_id,
+        p1_0.id,
+        p1_0.activo,
+        p1_0.beneficios,
+        p1_0.created_at,
+        p1_0.descripcion,
+        p1_0.duracion_meses,
+        p1_0.nombre,
+        p1_0.precio,
+        p1_0.tipo,
+        m1_0.renovacion_automatica,
+        ca1_0.objetivo,
+        ca1_0.peso,
+        ca1_0.quiere_instructor,
+        r1_0.id,
+        r1_0.activa,
+        r1_0.client_id,
+        r1_0.created_at,
+        r1_0.fecha_generacion,
+        r1_0.frecuencia_semanal,
+        r1_0.generated_by_system,
+        r1_0.nivel_dificultad,
+        r1_0.objetivo,
+        r1_0.updated_at 
+    from
+        clients ca1_0 
+    join
+        users ca1_1 
+            on ca1_0.user_id=ca1_1.id 
+    left join
+        memberships m1_0 
+            on ca1_0.user_id=m1_0.client_id 
+    left join
+        membership_plans p1_0 
+            on p1_0.id=m1_0.plan_id 
+    left join
+        routines r1_0 
+            on ca1_0.user_id=r1_0.client_id 
+    where
+        ca1_0.instructor_id=?
+2026-05-27T17:49:19.177-05:00  WARN 17780 --- [nio-8080-exec-3] .w.s.m.s.DefaultHandlerExceptionResolver : Ignoring exception, response committed already: org.springframework.http.converter.HttpMessageNotWritableException: Could not write JSON: Document nesting depth (1001) exceeds the maximum allowed (1000, from `StreamWriteConstraints.getMaxNestingDepth()`)
+2026-05-27T17:49:19.698-05:00  WARN 17780 --- [nio-8080-exec-3] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.http.converter.HttpMessageNotWritableException: Could not write JSON: Document nesting depth (1001) exceeds the maximum allowed (1000, from `StreamWriteConstraints.getMaxNestingDepth()`)]
+Hibernate: 
+    select
+        u1_0.id,
+        case 
+            when u1_1.user_id is not null 
+                then 1 
+            when u1_2.user_id is not null 
+                then 2 
+            when u1_3.user_id is not null 
+                then 3 
+        end,
+        u1_0.activo,
+        u1_0.apellido,
+        u1_0.contrasena,
+        u1_0.email,
+        u1_0.documento,
+        u1_0.fecha_registro,
+        u1_0.nombre,
+        u1_0.rol,
+        u1_0.status,
+        u1_0.telefono,
+        u1_0.updated_at,
+        u1_1.created_at,
+        u1_1.nivel_acceso,
+        u1_2.active,
+        u1_2.altura,
+        u1_2.created_at,
+        u1_2.fecha_nacimiento,
+        u1_2.frecuencia_entrenamiento,
+        u1_2.genero,
+        u1_2.imc,
+        u1_2.instructor_id,
+        u1_2.user_id,
+        u1_2.objetivo,
+        u1_2.peso,
+        u1_2.quiere_instructor,
+        u1_3.anos_experiencia,
+        u1_3.certificaciones,
+        u1_3.contract_type,
+        u1_3.created_at,
+        u1_3.disponible,
+        u1_3.especialidad,
+        u1_3.fecha_contratacion,
+        u1_3.horario_trabajo,
+        u1_3.salario 
+    from
+        users u1_0 
+    left join
+        administradores u1_1 
+            on u1_0.id=u1_1.user_id 
+    left join
+        clients u1_2 
+            on u1_0.id=u1_2.user_id 
+    left join
+        instructors u1_3 
+            on u1_0.id=u1_3.user_id 
+    where
+        u1_0.email=?
+Hibernate: 
+    select
+        i1_0.user_id,
+        i1_1.activo,
+        i1_1.apellido,
+        i1_1.contrasena,
+        i1_1.email,
+        i1_1.documento,
+        i1_1.fecha_registro,
+        i1_1.nombre,
+        i1_1.rol,
+        i1_1.status,
+        i1_1.telefono,
+        i1_1.updated_at,
+        i1_0.anos_experiencia,
+        i1_0.certificaciones,
+        i1_0.contract_type,
+        i1_0.created_at,
+        i1_0.disponible,
+        i1_0.especialidad,
+        i1_0.fecha_contratacion,
+        i1_0.horario_trabajo,
+        i1_0.salario 
+    from
+        instructors i1_0 
+    join
+        users i1_1 
+            on i1_0.user_id=i1_1.id 
+    where
+        i1_0.user_id=?
+Hibernate: 
+    select
+        m1_0.id,
+        m1_0.activo,
+        m1_0.client_id,
+        c1_0.user_id,
+        c1_1.activo,
+        c1_1.apellido,
+        c1_1.contrasena,
+        c1_1.email,
+        c1_1.documento,
+        c1_1.fecha_registro,
+        c1_1.nombre,
+        c1_1.rol,
+        c1_1.status,
+        c1_1.telefono,
+        c1_1.updated_at,
+        c1_0.active,
+        c1_0.altura,
+        c1_0.created_at,
+        c1_0.fecha_nacimiento,
+        c1_0.frecuencia_entrenamiento,
+        c1_0.genero,
+        c1_0.imc,
+        i1_0.user_id,
+        i1_1.activo,
+        i1_1.apellido,
+        i1_1.contrasena,
+        i1_1.email,
+        i1_1.documento,
+        i1_1.fecha_registro,
+        i1_1.nombre,
+        i1_1.rol,
+        i1_1.status,
+        i1_1.telefono,
+        i1_1.updated_at,
+        i1_0.anos_experiencia,
+        i1_0.certificaciones,
+        i1_0.contract_type,
+        i1_0.created_at,
+        i1_0.disponible,
+        i1_0.especialidad,
+        i1_0.fecha_contratacion,
+        i1_0.horario_trabajo,
+        i1_0.salario,
+        c1_0.objetivo,
+        c1_0.peso,
+        c1_0.quiere_instructor,
+        r1_0.id,
+        r1_0.activa,
+        r1_0.client_id,
+        r1_0.created_at,
+        r1_0.fecha_generacion,
+        r1_0.frecuencia_semanal,
+        r1_0.generated_by_system,
+        r1_0.nivel_dificultad,
+        r1_0.objetivo,
+        r1_0.updated_at,
+        m1_0.created_at,
+        m1_0.estado,
+        m1_0.fecha_inicio,
+        m1_0.fecha_vencimiento,
+        m1_0.plan_id,
+        p1_0.id,
+        p1_0.activo,
+        p1_0.beneficios,
+        p1_0.created_at,
+        p1_0.descripcion,
+        p1_0.duracion_meses,
+        p1_0.nombre,
+        p1_0.precio,
+        p1_0.tipo,
+        m1_0.renovacion_automatica 
+    from
+        memberships m1_0 
+    join
+        clients c1_0 
+            on c1_0.user_id=m1_0.client_id 
+    join
+        users c1_1 
+            on c1_0.user_id=c1_1.id 
+    left join
+        instructors i1_0 
+            on i1_0.user_id=c1_0.instructor_id 
+    left join
+        users i1_1 
+            on i1_0.user_id=i1_1.id 
+    left join
+        routines r1_0 
+            on c1_0.user_id=r1_0.client_id 
+    join
+        membership_plans p1_0 
+            on p1_0.id=m1_0.plan_id 
+    where
+        m1_0.client_id=?
+Hibernate: 
+    select
+        c1_0.user_id,
+        c1_1.activo,
+        c1_1.apellido,
+        c1_1.contrasena,
+        c1_1.email,
+        c1_1.documento,
+        c1_1.fecha_registro,
+        c1_1.nombre,
+        c1_1.rol,
+        c1_1.status,
+        c1_1.telefono,
+        c1_1.updated_at,
+        c1_0.active,
+        c1_0.altura,
+        c1_0.created_at,
+        c1_0.fecha_nacimiento,
+        c1_0.frecuencia_entrenamiento,
+        c1_0.genero,
+        c1_0.imc,
+        i1_0.user_id,
+        i1_1.activo,
+        i1_1.apellido,
+        i1_1.contrasena,
+        i1_1.email,
+        i1_1.documento,
+        i1_1.fecha_registro,
+        i1_1.nombre,
+        i1_1.rol,
+        i1_1.status,
+        i1_1.telefono,
+        i1_1.updated_at,
+        i1_0.anos_experiencia,
+        i1_0.certificaciones,
+        i1_0.contract_type,
+        i1_0.created_at,
+        i1_0.disponible,
+        i1_0.especialidad,
+        i1_0.fecha_contratacion,
+        i1_0.horario_trabajo,
+        i1_0.salario,
+        m1_0.id,
+        m1_0.activo,
+        m1_0.client_id,
+        m1_0.created_at,
+        m1_0.estado,
+        m1_0.fecha_inicio,
+        m1_0.fecha_vencimiento,
+        m1_0.plan_id,
+        p1_0.id,
+        p1_0.activo,
+        p1_0.beneficios,
+        p1_0.created_at,
+        p1_0.descripcion,
+        p1_0.duracion_meses,
+        p1_0.nombre,
+        p1_0.precio,
+        p1_0.tipo,
+        m1_0.renovacion_automatica,
+        c1_0.objetivo,
+        c1_0.peso,
+        c1_0.quiere_instructor,
+        r1_0.id,
+        r1_0.activa,
+        r1_0.client_id,
+        r1_0.created_at,
+        r1_0.fecha_generacion,
+        r1_0.frecuencia_semanal,
+        r1_0.generated_by_system,
+        r1_0.nivel_dificultad,
+        r1_0.objetivo,
+        r1_0.updated_at 
+    from
+        clients c1_0 
+    join
+        users c1_1 
+            on c1_0.user_id=c1_1.id 
+    left join
+        instructors i1_0 
+            on i1_0.user_id=c1_0.instructor_id 
+    left join
+        users i1_1 
+            on i1_0.user_id=i1_1.id 
+    left join
+        memberships m1_0 
+            on c1_0.user_id=m1_0.client_id 
+    left join
+        membership_plans p1_0 
+            on p1_0.id=m1_0.plan_id 
+    left join
+        routines r1_0 
+            on c1_0.user_id=r1_0.client_id 
+    where
+        c1_0.user_id=?
+Hibernate: 
+    select
+        ca1_0.instructor_id,
+        ca1_0.user_id,
+        ca1_1.activo,
+        ca1_1.apellido,
+        ca1_1.contrasena,
+        ca1_1.email,
+        ca1_1.documento,
+        ca1_1.fecha_registro,
+        ca1_1.nombre,
+        ca1_1.rol,
+        ca1_1.status,
+        ca1_1.telefono,
+        ca1_1.updated_at,
+        ca1_0.active,
+        ca1_0.altura,
+        ca1_0.created_at,
+        ca1_0.fecha_nacimiento,
+        ca1_0.frecuencia_entrenamiento,
+        ca1_0.genero,
+        ca1_0.imc,
+        m1_0.id,
+        m1_0.activo,
+        m1_0.client_id,
+        m1_0.created_at,
+        m1_0.estado,
+        m1_0.fecha_inicio,
+        m1_0.fecha_vencimiento,
+        m1_0.plan_id,
+        p1_0.id,
+        p1_0.activo,
+        p1_0.beneficios,
+        p1_0.created_at,
+        p1_0.descripcion,
+        p1_0.duracion_meses,
+        p1_0.nombre,
+        p1_0.precio,
+        p1_0.tipo,
+        m1_0.renovacion_automatica,
+        ca1_0.objetivo,
+        ca1_0.peso,
+        ca1_0.quiere_instructor,
+        r1_0.id,
+        r1_0.activa,
+        r1_0.client_id,
+        r1_0.created_at,
+        r1_0.fecha_generacion,
+        r1_0.frecuencia_semanal,
+        r1_0.generated_by_system,
+        r1_0.nivel_dificultad,
+        r1_0.objetivo,
+        r1_0.updated_at 
+    from
+        clients ca1_0 
+    join
+        users ca1_1 
+            on ca1_0.user_id=ca1_1.id 
+    left join
+        memberships m1_0 
+            on ca1_0.user_id=m1_0.client_id 
+    left join
+        membership_plans p1_0 
+            on p1_0.id=m1_0.plan_id 
+    left join
+        routines r1_0 
+            on ca1_0.user_id=r1_0.client_id 
+    where
+        ca1_0.instructor_id=?
+2026-05-27T17:49:21.780-05:00  WARN 17780 --- [nio-8080-exec-6] .w.s.m.s.DefaultHandlerExceptionResolver : Ignoring exception, response committed already: org.springframework.http.converter.HttpMessageNotWritableException: Could not write JSON: Document nesting depth (1001) exceeds the maximum allowed (1000, from `StreamWriteConstraints.getMaxNestingDepth()`)
+2026-05-27T17:49:21.796-05:00  WARN 17780 --- [nio-8080-exec-6] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.http.converter.HttpMessageNotWritableException: Could not write JSON: Document nesting depth (1001) exceeds the maximum allowed (1000, from `StreamWriteConstraints.getMaxNestingDepth()`)]
+[RestAuthenticationEntryPoint] commence triggered. servletPath=/api/api/auth/login, requestURI=/api/api/auth/login, authException=org.springframework.security.authentication.InsufficientAuthenticationException, message=Full authentication is required to access this resource
+2026-05-27T17:58:27.753-05:00  WARN 17780 --- [l-1:housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=1m55s933ms664µs400ns).

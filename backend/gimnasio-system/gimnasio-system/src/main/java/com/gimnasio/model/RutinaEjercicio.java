@@ -1,5 +1,6 @@
 package com.gimnasio.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 
 @Entity
@@ -12,6 +13,7 @@ public class RutinaEjercicio {
 
     @ManyToOne
     @JoinColumn(name = "routine_id", nullable = false)
+    @JsonIgnoreProperties({"rutinaEjercicios", "cliente"})
     private Rutina rutina;
 
     @ManyToOne

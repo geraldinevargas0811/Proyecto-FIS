@@ -48,6 +48,7 @@ public class AuthController {
                     new UsernamePasswordAuthenticationToken(request.getCorreo(), request.getContrasena())
             );
 
+
             Usuario usuario = usuarioService.findByCorreo(request.getCorreo())
                     .orElseThrow(() -> new BadCredentialsException("Credenciales invalidas"));
 

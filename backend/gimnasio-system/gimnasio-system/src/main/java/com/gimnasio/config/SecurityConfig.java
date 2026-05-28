@@ -60,7 +60,12 @@ public class SecurityConfig {
     @Bean
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
-        configuration.setAllowedOrigins(List.of("http://localhost:5173", "http://localhost:3000"));
+        configuration.setAllowedOrigins(List.of(
+                "http://localhost:5173",
+                "http://127.0.0.1:5173",
+                "http://localhost:3000",
+                "http://127.0.0.1:3000"
+        ));
         configuration.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE", "OPTIONS"));
         configuration.setAllowedHeaders(Arrays.asList("Authorization", "Content-Type", "Accept", "Origin", "X-Requested-With"));
         configuration.setExposedHeaders(List.of("Authorization"));
@@ -77,7 +82,18 @@ public class SecurityConfig {
             .cors(cors -> cors.configurationSource(corsConfigurationSource()))
             .csrf(csrf -> csrf.disable())
             .authorizeHttpRequests(auth -> auth
-                .requestMatchers("/api/auth/**", "/api/public/**").permitAll()
+                // Auth endpoints públicos
+                .requestMatchers(org.springframework.http.HttpMethod.POST, "/api/auth/login").permitAll()
+                .requestMatchers(org.springframework.http.HttpMethod.POST, "/api/auth/refresh").permitAll()
+                .requestMatchers(org.springframework.http.HttpMethod.POST, "/api/auth/logout").permitAll()
+
+                .requestMatchers("/api/public/**").permitAll()
+                .requestMatchers("/error").permitAll()
+                // preflight CORS
+                .requestMatchers(org.springframework.http.HttpMethod.OPTIONS, "/**").permitAll()
+                // me: requiere autenticación
+                .requestMatchers("/api/auth/me").authenticated()
+                // roles
                 .requestMatchers("/api/admin/**").hasRole("ADMIN")
                 .requestMatchers("/api/instructor/**").hasRole("INSTRUCTOR")
                 .requestMatchers("/api/cliente/**").hasRole("CLIENTE")

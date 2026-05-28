@@ -10,8 +10,12 @@ public class UserResponse {
     private String nombreCompleto;
     private String correo;
     private String rol;
+    // Alias para el frontend: el frontend usa `role`
+    private String role;
+
     private boolean activo;
     private String status;
+
 
     public UserResponse() {}
 
@@ -22,7 +26,9 @@ public class UserResponse {
         this.nombreCompleto = usuario.getNombreCompleto();
         this.correo = usuario.getCorreo();
         this.rol = usuario.getRol().name();
+        this.role = this.rol;
         this.activo = usuario.isActivo();
+
         this.status = usuario.getStatus() != null ? usuario.getStatus().name() : null;
     }
 
@@ -44,9 +50,14 @@ public class UserResponse {
     public String getRol() { return rol; }
     public void setRol(String rol) { this.rol = rol; }
 
+    public String getRole() { return role; }
+    public void setRole(String role) { this.role = role; }
+
+
     public boolean isActivo() { return activo; }
     public void setActivo(boolean activo) { this.activo = activo; }
 
     public String getStatus() { return status; }
     public void setStatus(String status) { this.status = status; }
 }
+

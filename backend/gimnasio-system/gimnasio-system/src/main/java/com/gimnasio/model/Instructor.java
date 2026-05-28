@@ -1,5 +1,6 @@
 package com.gimnasio.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.gimnasio.enums.ContractType;
 import jakarta.persistence.*;
 import java.math.BigDecimal;
@@ -43,6 +44,7 @@ public class Instructor extends Usuario {
     private LocalDateTime updatedAt;
 
     @OneToMany(mappedBy = "instructor")
+    @JsonIgnoreProperties({"instructor", "membresia", "rutina", "progresos", "notasInstructor"})
     private List<Cliente> clientesAsignados = new ArrayList<>();
 
     @PrePersist

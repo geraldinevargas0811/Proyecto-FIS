@@ -7,22 +7,30 @@ export type AuthTokens = {
 
 // Ajusta si tu backend devuelve un shape distinto
 export type AuthMe = {
-  id?: number | string
-  username?: string
-  email?: string
+  id: number
+  nombre?: string
+  apellido?: string
+  nombreCompleto?: string
+  correo: string
+  rol?: Role
   role: Role
+  activo?: boolean
+  status?: string
 }
 
+
 export type LoginRequest = {
-  username: string
-  password: string
+  correo: string
+  contrasena: string
 }
+
 
 export type LoginResponse = AuthTokens & {
   me?: AuthMe
+  usuario?: AuthMe
 }
 
-export type RefreshResponse = AuthTokens
+export type RefreshResponse = LoginResponse
 
 export type LogoutResponse = {
   message?: string

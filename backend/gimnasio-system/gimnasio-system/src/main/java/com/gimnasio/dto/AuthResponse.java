@@ -8,6 +8,7 @@ public class AuthResponse {
     private long accessTokenExpiresIn;
     private long refreshTokenExpiresIn;
     private UserResponse usuario;
+    private UserResponse me;
 
     public AuthResponse() {}
 
@@ -17,6 +18,7 @@ public class AuthResponse {
         this.accessTokenExpiresIn = accessTokenExpiresIn;
         this.refreshTokenExpiresIn = refreshTokenExpiresIn;
         this.usuario = usuario;
+        this.me = usuario;
     }
 
     public String getAccessToken() { return accessToken; }
@@ -35,5 +37,14 @@ public class AuthResponse {
     public void setRefreshTokenExpiresIn(long refreshTokenExpiresIn) { this.refreshTokenExpiresIn = refreshTokenExpiresIn; }
 
     public UserResponse getUsuario() { return usuario; }
-    public void setUsuario(UserResponse usuario) { this.usuario = usuario; }
+    public void setUsuario(UserResponse usuario) {
+        this.usuario = usuario;
+        this.me = usuario;
+    }
+
+    public UserResponse getMe() { return me; }
+    public void setMe(UserResponse me) {
+        this.me = me;
+        this.usuario = me;
+    }
 }

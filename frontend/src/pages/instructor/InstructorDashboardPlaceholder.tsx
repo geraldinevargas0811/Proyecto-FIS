@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import Card from '../../components/ui/Card'
+import Card from '../../components/ui/Card.tsx'
 import EmptyState from '../../components/ui/EmptyState'
 
 export default function InstructorDashboardPlaceholder() {

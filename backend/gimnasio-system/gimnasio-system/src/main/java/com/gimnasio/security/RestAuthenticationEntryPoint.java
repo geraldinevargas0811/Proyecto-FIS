@@ -23,6 +23,11 @@ public class RestAuthenticationEntryPoint implements AuthenticationEntryPoint {
 
     @Override
     public void commence(HttpServletRequest request, HttpServletResponse response, AuthenticationException authException) throws IOException {
+        System.out.println("[RestAuthenticationEntryPoint] commence triggered. servletPath=" + request.getServletPath()
+                + ", requestURI=" + request.getRequestURI()
+                + ", authException=" + (authException != null ? authException.getClass().getName() : "null")
+                + ", message=" + (authException != null ? authException.getMessage() : "null"));
+
         response.setStatus(HttpStatus.UNAUTHORIZED.value());
         response.setContentType(MediaType.APPLICATION_JSON_VALUE);
 
@@ -35,4 +40,5 @@ public class RestAuthenticationEntryPoint implements AuthenticationEntryPoint {
 
         objectMapper.writeValue(response.getOutputStream(), error);
     }
+
 }

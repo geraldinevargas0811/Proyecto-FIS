@@ -1,5 +1,6 @@
 package com.gimnasio.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import java.time.LocalDateTime;
 
@@ -13,10 +14,12 @@ public class NotaInstructor {
 
     @ManyToOne
     @JoinColumn(name = "instructor_id", nullable = false)
+    @JsonIgnoreProperties({"clientesAsignados"})
     private Instructor instructor;
 
     @ManyToOne
     @JoinColumn(name = "client_id", nullable = false)
+    @JsonIgnoreProperties({"notasInstructor", "membresia", "rutina", "progresos", "instructor"})
     private Cliente cliente;
 
     @Column(nullable = false, columnDefinition = "TEXT")

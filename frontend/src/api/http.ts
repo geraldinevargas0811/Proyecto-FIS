@@ -1,8 +1,12 @@
 import axios from 'axios'
 
-const baseURL = '' // Ajusta si tu backend no vive en el mismo host. Ej: import.meta.env.VITE_API_BASE_URL
+const configuredBaseURL = import.meta.env.VITE_API_URL ?? 'http://localhost:8080'
+const baseURL = configuredBaseURL.replace(/\/api\/?$/, '')
 
 export const http = axios.create({
   baseURL,
+  headers: {
+    Accept: 'application/json',
+    'Content-Type': 'application/json',
+  },
 })
-

@@ -1,5 +1,6 @@
 package com.gimnasio.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.gimnasio.enums.Genero;
 import com.gimnasio.enums.Objetivo;
 import jakarta.persistence.*;
@@ -35,6 +36,7 @@ public class Cliente extends Usuario {
 
     @ManyToOne
     @JoinColumn(name = "instructor_id")
+    @JsonIgnoreProperties({"clientesAsignados"})
     private Instructor instructor;
 
     @Column(name = "quiere_instructor")
@@ -49,17 +51,21 @@ public class Cliente extends Usuario {
     private LocalDateTime updatedAt;
 
     @OneToOne(mappedBy = "cliente", cascade = CascadeType.ALL)
+    @JsonIgnoreProperties({"cliente", "pagos"})
     private Membresia membresia;
 
     @OneToMany(mappedBy = "cliente", cascade = CascadeType.ALL)
     @OrderBy("fecha DESC")
+    @JsonIgnoreProperties({"cliente"})
     private List<ProgresoFisico> progresos = new ArrayList<>();
 
     @OneToOne(mappedBy = "cliente", cascade = CascadeType.ALL)
+    @JsonIgnoreProperties({"cliente"})
     private Rutina rutina;
 
     @OneToMany(mappedBy = "cliente", cascade = CascadeType.ALL)
     @OrderBy("fecha DESC")
+    @JsonIgnoreProperties({"cliente", "instructor"})
     private List<NotaInstructor> notasInstructor = new ArrayList<>();
 
     @PrePersist

@@ -1,5 +1,6 @@
 package com.gimnasio.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.gimnasio.enums.EstadoPago;
 import com.gimnasio.enums.MetodoPago;
 import jakarta.persistence.*;
@@ -16,10 +17,12 @@ public class Pago {
 
     @ManyToOne
     @JoinColumn(name = "client_id", nullable = false)
+    @JsonIgnoreProperties({"membresia", "rutina", "progresos", "notasInstructor", "instructor"})
     private Cliente cliente;
 
     @ManyToOne
     @JoinColumn(name = "membership_id")
+    @JsonIgnoreProperties({"cliente", "pagos"})
     private Membresia membresia;
 
     @Column(nullable = false, precision = 10, scale = 2)

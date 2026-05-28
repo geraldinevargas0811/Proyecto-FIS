@@ -19,9 +19,8 @@ function RoleRedirect() {
 export default function AppRouter() {
   return (
     <Routes>
-      <Route path="/login" element={<LoginPage />} />
-
       <Route element={<AuthProvider />}>
+        <Route path="/login" element={<LoginPage />} />
         <Route path="/" element={<RoleRedirect />} />
 
         <Route element={<ProtectedRoute />}>
