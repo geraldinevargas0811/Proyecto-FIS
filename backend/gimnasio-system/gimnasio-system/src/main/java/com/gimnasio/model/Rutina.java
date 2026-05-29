@@ -17,7 +17,8 @@ public class Rutina {
 
     @OneToOne
     @JoinColumn(name = "client_id", nullable = false)
-    @JsonIgnoreProperties({"rutina", "membresia", "progresos", "notasInstructor", "instructor"})
+    // Cortar ciclo Cliente <-> Rutina
+    @JsonIgnoreProperties({"rutina", "membresia", "progresos", "notasInstructor", "instructor", "cliente"})
     private Cliente cliente;
 
     @Enumerated(EnumType.STRING)

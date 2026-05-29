@@ -9,7 +9,9 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.math.BigDecimal;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 @Service
@@ -84,6 +86,19 @@ public class AdministradorService {
 
         Cliente savedCliente = clienteRepository.save(cliente);
 
+        if (dto.getPlanId() != null) {
+            Plan plan = planRepository.findById(dto.getPlanId())
+                    .orElseThrow(() -> new IllegalArgumentException("Plan no encontrado"));
+            Membresia membresia = new Membresia();
+            membresia.setCliente(savedCliente);
+            membresia.setPlan(plan);
+            membresia.setFechaInicio(java.time.LocalDate.now());
+            membresia.setFechaVencimiento(java.time.LocalDate.now().plusMonths(plan.getDuracionMeses()));
+            membresia.setEstado(com.gimnasio.enums.EstadoMembresia.PENDIENTE_PAGO);
+            membresia.setActivo(true);
+            membresiaRepository.save(membresia);
+        }
+
         // Generar rutina automáticamente
         try {
             sistemaService.generarRutina(savedCliente);
@@ -98,6 +113,9 @@ public class AdministradorService {
     public Instructor registrarInstructor(RegistroInstructorDTO dto) {
         if (usuarioRepository.existsByCorreo(dto.getCorreo())) {
             throw new IllegalArgumentException("Ya existe un usuario con el correo: " + dto.getCorreo());
+        }
+        if (dto.getDocumento() != null && usuarioRepository.existsByDocumento(dto.getDocumento())) {
+            throw new IllegalArgumentException("Ya existe un usuario con el documento: " + dto.getDocumento());
         }
 
         Instructor instructor = new Instructor();
@@ -133,7 +151,72 @@ public class AdministradorService {
         Usuario usuario = usuarioRepository.findById(usuarioId)
                 .orElseThrow(() -> new RuntimeException("Usuario no encontrado: " + usuarioId));
         usuario.desactivarCuenta();
+        if (usuario instanceof Cliente cliente) {
+            cliente.setActive(false);
+        }
+        if (usuario instanceof Instructor instructor) {
+            instructor.setDisponible(false);
+        }
         usuarioRepository.save(usuario);
+    }
+
+    @Transactional
+    public Cliente actualizarCliente(Long clienteId, Map<String, Object> body) {
+        Cliente cliente = clienteRepository.findById(clienteId)
+                .orElseThrow(() -> new IllegalArgumentException("Cliente no encontrado"));
+
+        actualizarUsuarioBase(cliente, body);
+
+        if (body.containsKey("peso")) cliente.setPeso(toBigDecimal(body.get("peso")));
+        if (body.containsKey("altura")) cliente.setAltura(toBigDecimal(body.get("altura")));
+        if (body.containsKey("objetivo") && body.get("objetivo") != null) {
+            cliente.setObjetivo(com.gimnasio.enums.Objetivo.valueOf(body.get("objetivo").toString()));
+        }
+        if (body.containsKey("frecuenciaEntrenamiento")) cliente.setFrecuenciaEntrenamiento(toStringValue(body.get("frecuenciaEntrenamiento")));
+        if (body.containsKey("genero")) {
+            Object genero = body.get("genero");
+            if (genero == null || genero.toString().isBlank()) {
+                cliente.setGenero(null);
+            } else {
+                cliente.setGenero(com.gimnasio.enums.Genero.valueOf(genero.toString().toUpperCase()));
+            }
+        }
+        if (body.containsKey("quiereInstructor")) cliente.setQuiereInstructor(Boolean.TRUE.equals(body.get("quiereInstructor")));
+        if (body.containsKey("instructorId")) {
+            Object instructorId = body.get("instructorId");
+            if (instructorId == null || instructorId.toString().isBlank()) {
+                cliente.setInstructor(null);
+            } else {
+                Instructor instructor = instructorRepository.findById(Long.parseLong(instructorId.toString()))
+                        .orElseThrow(() -> new IllegalArgumentException("Instructor no encontrado"));
+                cliente.setInstructor(instructor);
+            }
+        }
+        if (cliente.getPeso() != null && cliente.getAltura() != null) {
+            cliente.setImc(cliente.calcularIMC());
+        }
+
+        return clienteRepository.save(cliente);
+    }
+
+    @Transactional
+    public Instructor actualizarInstructor(Long instructorId, Map<String, Object> body) {
+        Instructor instructor = instructorRepository.findById(instructorId)
+                .orElseThrow(() -> new IllegalArgumentException("Instructor no encontrado"));
+
+        actualizarUsuarioBase(instructor, body);
+
+        if (body.containsKey("especialidad")) instructor.setEspecialidad(toStringValue(body.get("especialidad")));
+        if (body.containsKey("certificaciones")) instructor.setCertificaciones(toStringValue(body.get("certificaciones")));
+        if (body.containsKey("anosExperiencia")) instructor.setAnosExperiencia(toInteger(body.get("anosExperiencia")));
+        if (body.containsKey("salario")) instructor.setSalario(toBigDecimal(body.get("salario")));
+        if (body.containsKey("horarioTrabajo")) instructor.setHorarioTrabajo(toStringValue(body.get("horarioTrabajo")));
+        if (body.containsKey("disponible")) instructor.setDisponible(Boolean.TRUE.equals(body.get("disponible")));
+        if (body.containsKey("contractType") && body.get("contractType") != null) {
+            instructor.setContractType(com.gimnasio.enums.ContractType.valueOf(body.get("contractType").toString().toUpperCase()));
+        }
+
+        return instructorRepository.save(instructor);
     }
 
     @Transactional
@@ -178,5 +261,69 @@ public class AdministradorService {
 
     public List<Cliente> listarClientesActivos() {
         return clienteRepository.findByActive(true);
+    }
+
+    private void actualizarUsuarioBase(Usuario usuario, Map<String, Object> body) {
+        if (body.containsKey("nombre")) usuario.setNombre(validarTextoHumano(toStringValue(body.get("nombre")), "nombre"));
+        if (body.containsKey("apellido")) usuario.setApellido(validarTextoHumano(toStringValue(body.get("apellido")), "apellido"));
+        if (body.containsKey("correo")) {
+            String correo = toStringValue(body.get("correo"));
+            if (correo == null || !correo.matches("^[^@\\s]+@[^@\\s]+\\.[^@\\s]+$")) {
+                throw new IllegalArgumentException("Ingrese un correo valido");
+            }
+            if (usuarioRepository.existsByCorreoAndIdNot(correo, usuario.getId())) {
+                throw new IllegalArgumentException("Ya existe un usuario con este correo");
+            }
+            usuario.setCorreo(correo);
+        }
+        if (body.containsKey("documento")) {
+            String documento = toStringValue(body.get("documento"));
+            if (documento == null || !documento.matches("^[0-9]{5,20}$")) {
+                throw new IllegalArgumentException("El documento debe contener entre 5 y 20 numeros");
+            }
+            if (usuarioRepository.existsByDocumentoAndIdNot(documento, usuario.getId())) {
+                throw new IllegalArgumentException("Ya existe un usuario con este documento");
+            }
+            usuario.setDocumento(documento);
+        }
+        if (body.containsKey("telefono")) {
+            String telefono = toStringValue(body.get("telefono"));
+            if (telefono != null && !telefono.isBlank() && !telefono.matches("^[0-9]{7,15}$")) {
+                throw new IllegalArgumentException("El telefono debe contener entre 7 y 15 numeros");
+            }
+            usuario.setTelefono(telefono);
+        }
+        if (body.containsKey("activo")) {
+            boolean activo = Boolean.TRUE.equals(body.get("activo"));
+            usuario.setActivo(activo);
+            if (usuario instanceof Cliente cliente) cliente.setActive(activo);
+        }
+    }
+
+    private String validarTextoHumano(String value, String field) {
+        if (value == null || value.isBlank()) {
+            throw new IllegalArgumentException("El " + field + " es requerido");
+        }
+        if (!value.matches("^[A-Za-zÁÉÍÓÚáéíóúÑñ ]+$")) {
+            throw new IllegalArgumentException("El " + field + " solo puede contener letras y espacios");
+        }
+        return value.trim();
+    }
+
+    private String toStringValue(Object value) {
+        return value == null ? null : value.toString();
+    }
+
+    private Integer toInteger(Object value) {
+        if (value == null || value.toString().isBlank()) return null;
+        if (value instanceof Number number) return number.intValue();
+        return Integer.parseInt(value.toString());
+    }
+
+    private BigDecimal toBigDecimal(Object value) {
+        if (value == null || value.toString().isBlank()) return null;
+        if (value instanceof BigDecimal decimal) return decimal;
+        if (value instanceof Number number) return BigDecimal.valueOf(number.doubleValue());
+        return new BigDecimal(value.toString());
     }
 }

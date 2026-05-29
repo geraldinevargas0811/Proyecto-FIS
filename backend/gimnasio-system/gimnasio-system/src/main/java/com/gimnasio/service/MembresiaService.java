@@ -7,7 +7,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDate;
+import java.math.BigDecimal;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 @Service
@@ -89,5 +91,68 @@ public class MembresiaService {
 
     public Optional<Plan> getPlanById(Long id) {
         return planRepository.findById(id);
+    }
+
+    @Transactional
+    public Membresia renovarMembresia(Long membresiaId) {
+        Membresia membresia = membresiaRepository.findById(membresiaId)
+                .orElseThrow(() -> new RuntimeException("Membresia no encontrada"));
+        LocalDate base = membresia.getFechaVencimiento() != null && membresia.getFechaVencimiento().isAfter(LocalDate.now())
+                ? membresia.getFechaVencimiento()
+                : LocalDate.now();
+        membresia.setFechaInicio(LocalDate.now());
+        membresia.setFechaVencimiento(base.plusMonths(membresia.getPlan().getDuracionMeses()));
+        membresia.setEstado(EstadoMembresia.PENDIENTE_PAGO);
+        membresia.setActivo(true);
+        return membresiaRepository.save(membresia);
+    }
+
+    @Transactional
+    public Plan crearPlan(Map<String, Object> body) {
+        Plan plan = new Plan();
+        aplicarDatosPlan(plan, body);
+        plan.setActivo(true);
+        return planRepository.save(plan);
+    }
+
+    @Transactional
+    public Plan actualizarPlan(Long id, Map<String, Object> body) {
+        Plan plan = planRepository.findById(id).orElseThrow(() -> new RuntimeException("Plan no encontrado"));
+        aplicarDatosPlan(plan, body);
+        if (body.containsKey("activo")) plan.setActivo(Boolean.TRUE.equals(body.get("activo")));
+        return planRepository.save(plan);
+    }
+
+    @Transactional
+    public void desactivarPlan(Long id) {
+        Plan plan = planRepository.findById(id).orElseThrow(() -> new RuntimeException("Plan no encontrado"));
+        plan.setActivo(false);
+        planRepository.save(plan);
+    }
+
+    private void aplicarDatosPlan(Plan plan, Map<String, Object> body) {
+        if (body.containsKey("nombre")) plan.setNombre(requiredString(body.get("nombre"), "nombre"));
+        if (body.containsKey("descripcion")) plan.setDescripcion(toStringValue(body.get("descripcion")));
+        if (body.containsKey("duracionMeses")) {
+            int meses = Integer.parseInt(body.get("duracionMeses").toString());
+            if (meses <= 0) throw new IllegalArgumentException("La duracion debe ser mayor a cero");
+            plan.setDuracionMeses(meses);
+        }
+        if (body.containsKey("precio")) {
+            BigDecimal precio = new BigDecimal(body.get("precio").toString());
+            if (precio.compareTo(BigDecimal.ZERO) < 0) throw new IllegalArgumentException("El precio no puede ser negativo");
+            plan.setPrecio(precio);
+        }
+        if (body.containsKey("tipo")) plan.setTipo(toStringValue(body.get("tipo")));
+        if (body.containsKey("beneficios")) plan.setBeneficios(toStringValue(body.get("beneficios")));
+    }
+
+    private String requiredString(Object value, String field) {
+        if (value == null || value.toString().isBlank()) throw new IllegalArgumentException("El " + field + " es requerido");
+        return value.toString().trim();
+    }
+
+    private String toStringValue(Object value) {
+        return value == null ? null : value.toString();
     }
 }

@@ -6,6 +6,11 @@ import LoginPage from '../../features/auth/pages/LoginPage'
 import { useAuthStore } from '../../store/authStore'
 import DashboardLayout from '../layouts/DashboardLayout'
 import AdminDashboardPlaceholder from '../../pages/admin/AdminDashboardPlaceholder'
+import AdminClientesPage from '../../pages/admin/AdminClientesPage'
+import AdminInstructoresPage from '../../pages/admin/AdminInstructoresPage'
+import AdminPagosPage from '../../pages/admin/AdminPagosPage'
+import AdminMembresiasPage from '../../pages/admin/AdminMembresiasPage'
+import AdminPlanesPage from '../../pages/admin/AdminPlanesPage'
 import InstructorDashboardPlaceholder from '../../pages/instructor/InstructorDashboardPlaceholder'
 import ClienteDashboardPlaceholder from '../../pages/client/ClienteDashboardPlaceholder'
 
@@ -25,14 +30,20 @@ export default function AppRouter() {
 
         <Route element={<ProtectedRoute />}>
           <Route
-            path="/admin/dashboard"
+            path="/admin"
             element={
               <RoleGuard allowedRoles={['ADMIN']}>
                 <DashboardLayout />
               </RoleGuard>
             }
           >
-            <Route index element={<AdminDashboardPlaceholder />} />
+            <Route index element={<Navigate to="/admin/dashboard" replace />} />
+            <Route path="dashboard" element={<AdminDashboardPlaceholder />} />
+            <Route path="clientes" element={<AdminClientesPage />} />
+            <Route path="instructores" element={<AdminInstructoresPage />} />
+            <Route path="pagos" element={<AdminPagosPage />} />
+            <Route path="membresias" element={<AdminMembresiasPage />} />
+            <Route path="planes" element={<AdminPlanesPage />} />
           </Route>
 
           <Route

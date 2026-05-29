@@ -31,7 +31,7 @@ export default function MobileSidebarDrawer({
             animate={{ x: 0, opacity: 1 }}
             exit={{ x: -20, opacity: 0 }}
             transition={{ type: 'spring', stiffness: 300, damping: 30 }}
-            className="absolute left-0 top-0 h-full w-72 border-r border-white/10 bg-black/90 backdrop-blur"
+            className="absolute left-0 top-0 h-full w-72 border-r border-slate-200 bg-white backdrop-blur"
           >
             <Sidebar role={role} mobile onNavigate={() => onOpenChange(false)} />
           </motion.div>

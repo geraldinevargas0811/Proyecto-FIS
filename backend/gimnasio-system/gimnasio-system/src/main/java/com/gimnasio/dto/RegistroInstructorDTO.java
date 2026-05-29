@@ -8,9 +8,11 @@ import java.time.LocalDate;
 public class RegistroInstructorDTO {
 
     @NotBlank(message = "El nombre es requerido")
+    @Pattern(regexp = "^[A-Za-zÁÉÍÓÚáéíóúÑñ ]+$", message = "El nombre solo puede contener letras y espacios")
     private String nombre;
 
     @NotBlank(message = "El apellido es requerido")
+    @Pattern(regexp = "^[A-Za-zÁÉÍÓÚáéíóúÑñ ]+$", message = "El apellido solo puede contener letras y espacios")
     private String apellido;
 
     @NotBlank(message = "El correo es requerido")
@@ -22,8 +24,10 @@ public class RegistroInstructorDTO {
     private String contrasena;
 
     @NotBlank(message = "El documento es requerido")
+    @Pattern(regexp = "^[0-9]{5,20}$", message = "El documento debe contener entre 5 y 20 numeros")
     private String documento;
 
+    @Pattern(regexp = "^$|^[0-9]{7,15}$", message = "El telefono debe contener entre 7 y 15 numeros")
     private String telefono;
 
     private String especialidad;

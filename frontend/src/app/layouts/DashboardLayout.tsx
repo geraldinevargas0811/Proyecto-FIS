@@ -7,7 +7,7 @@ export default function DashboardLayout() {
   const role = useAuthStore((s) => s.role)
 
   return (
-    <div className="min-h-screen bg-black text-white">
+    <div className="min-h-screen bg-[radial-gradient(circle_at_top_left,rgba(6,182,212,0.16),transparent_32%),radial-gradient(circle_at_top_right,rgba(139,92,246,0.16),transparent_30%),linear-gradient(135deg,#f8fafc_0%,#eef7ff_48%,#f7f3ff_100%)] text-slate-950">
       <div className="flex min-h-screen">
         <Sidebar role={role} />
 

@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.math.BigDecimal;
 import java.util.UUID;
 
 @Service
@@ -42,6 +43,24 @@ public class PagoService {
         pago.setEstado(EstadoPago.PENDIENTE);
         pago.setReferencia("PAG-" + UUID.randomUUID().toString().substring(0, 8).toUpperCase());
 
+        return pagoRepository.save(pago);
+    }
+
+    @Transactional
+    public Pago registrarPagoAdmin(Long clienteId, Long membresiaId, MetodoPago metodo, BigDecimal monto, String observaciones) {
+        Cliente cliente = clienteRepository.findById(clienteId)
+                .orElseThrow(() -> new RuntimeException("Cliente no encontrado"));
+        Membresia membresia = membresiaId == null ? null : membresiaRepository.findById(membresiaId)
+                .orElseThrow(() -> new RuntimeException("Membresia no encontrada"));
+
+        Pago pago = new Pago();
+        pago.setCliente(cliente);
+        pago.setMembresia(membresia);
+        pago.setMonto(monto != null ? monto : membresia != null ? membresia.getPlan().getPrecio() : BigDecimal.ZERO);
+        pago.setMetodoPago(metodo);
+        pago.setEstado(EstadoPago.PENDIENTE);
+        pago.setObservaciones(observaciones);
+        pago.setReferencia("PAG-" + UUID.randomUUID().toString().substring(0, 8).toUpperCase());
         return pagoRepository.save(pago);
     }
 

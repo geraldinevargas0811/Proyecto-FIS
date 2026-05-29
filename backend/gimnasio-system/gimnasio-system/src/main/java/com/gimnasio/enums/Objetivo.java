@@ -4,7 +4,9 @@ package com.gimnasio.enums;
 public enum Objetivo {
     AUMENTAR_MASA("Aumentar Masa Muscular"),
     DEFINICION("Definición Muscular"),
-    PERDER_PESO("Perder Peso");
+    PERDER_PESO("Perder Peso"),
+    RECOMPOSICION("Recomposicion corporal"),
+    MANTENIMIENTO("Mantenimiento");
 
     private final String descripcion;
 
